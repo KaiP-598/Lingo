@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		4D00DD181E4ECF11006BC916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00DD171E4ECF11006BC916 /* AppDelegate.swift */; };
-		4D00DD1A1E4ECF11006BC916 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00DD191E4ECF11006BC916 /* ViewController.swift */; };
+		4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00DD191E4ECF11006BC916 /* SignInVC.swift */; };
 		4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1B1E4ECF11006BC916 /* Main.storyboard */; };
 		4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */; };
 		4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */; };
+		4D00DD2A1E4ECF7D006BC916 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */; };
+		9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D00DD141E4ECF11006BC916 /* Lingo_01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lingo_01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D00DD171E4ECF11006BC916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4D00DD191E4ECF11006BC916 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D00DD191E4ECF11006BC916 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		4D00DD1C1E4ECF11006BC916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D00DD211E4ECF11006BC916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D00DD231E4ECF11006BC916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
+		9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D43802C8650990FC25ABDFE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */,
+				D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4D00DD0B1E4ECF10006BC916 = {
 			isa = PBXGroup;
 			children = (
 				4D00DD161E4ECF11006BC916 /* Lingo_01 */,
 				4D00DD151E4ECF11006BC916 /* Products */,
+				0D43802C8650990FC25ABDFE /* Pods */,
+				83F41F3BE7BC71AF85B7FB8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +72,47 @@
 		4D00DD161E4ECF11006BC916 /* Lingo_01 */ = {
 			isa = PBXGroup;
 			children = (
+				4D2E459B1E4ED25E0048E2DD /* Controller */,
+				4D2E459A1E4ED2400048E2DD /* View */,
+				4D2E45991E4ED2370048E2DD /* Model */,
 				4D00DD171E4ECF11006BC916 /* AppDelegate.swift */,
-				4D00DD191E4ECF11006BC916 /* ViewController.swift */,
 				4D00DD1B1E4ECF11006BC916 /* Main.storyboard */,
 				4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */,
 				4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */,
 				4D00DD231E4ECF11006BC916 /* Info.plist */,
+				4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */,
 			);
 			path = Lingo_01;
+			sourceTree = "<group>";
+		};
+		4D2E45991E4ED2370048E2DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4D2E459A1E4ED2400048E2DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		83F41F3BE7BC71AF85B7FB8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D00DD261E4ECF11006BC916 /* Build configuration list for PBXNativeTarget "Lingo_01" */;
 			buildPhases = (
+				B3A45EE1176760AA58570E1C /* [CP] Check Pods Manifest.lock */,
 				4D00DD101E4ECF10006BC916 /* Sources */,
 				4D00DD111E4ECF10006BC916 /* Frameworks */,
 				4D00DD121E4ECF10006BC916 /* Resources */,
+				B349333B39C7BF76CAD9D795 /* [CP] Embed Pods Frameworks */,
+				2F11B9B01D9E2687FC5A194F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +150,7 @@
 				TargetAttributes = {
 					4D00DD131E4ECF10006BC916 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = D5XF8EMX6S;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */,
+				4D00DD2A1E4ECF7D006BC916 /* GoogleService-Info.plist in Resources */,
 				4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */,
 				4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */,
 			);
@@ -131,12 +187,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2F11B9B01D9E2687FC5A194F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B349333B39C7BF76CAD9D795 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3A45EE1176760AA58570E1C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4D00DD101E4ECF10006BC916 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D00DD1A1E4ECF11006BC916 /* ViewController.swift in Sources */,
+				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
 				4D00DD181E4ECF11006BC916 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,8 +360,10 @@
 		};
 		4D00DD271E4ECF11006BC916 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D5XF8EMX6S;
 				INFOPLIST_FILE = Lingo_01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kaip598.Lingo-01";
@@ -268,8 +374,10 @@
 		};
 		4D00DD281E4ECF11006BC916 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D5XF8EMX6S;
 				INFOPLIST_FILE = Lingo_01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kaip598.Lingo-01";
@@ -297,6 +405,7 @@
 				4D00DD281E4ECF11006BC916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
