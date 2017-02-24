@@ -19,6 +19,7 @@
 		4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */; };
 		4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */; };
 		4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FB1E5F097800511559 /* FeedVC.swift */; };
+		4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FD1E60276A00511559 /* CircieView.swift */; };
 		9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
 		4D71B9FA1E55DA2900511559 /* Lingo_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lingo_01.entitlements; sourceTree = "<group>"; };
 		4D71B9FB1E5F097800511559 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		4D71B9FD1E60276A00511559 /* CircieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircieView.swift; sourceTree = "<group>"; };
 		8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				4D2E459C1E4EE74F0048E2DD /* FancyView.swift */,
 				4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */,
 				4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */,
+				4D71B9FD1E60276A00511559 /* CircieView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
 				4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */,
+				4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */,
 				4D00DD181E4ECF11006BC916 /* AppDelegate.swift in Sources */,
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
