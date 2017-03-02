@@ -7,7 +7,7 @@
 //
 
 import UIKit
-@IBDesignable
+
 class FancyView: UIView {
 
     override func awakeFromNib() {

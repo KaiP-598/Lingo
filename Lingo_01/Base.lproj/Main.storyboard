@@ -161,7 +161,7 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-hL-TKG">
-                                        <rect key="frame" x="164.5" y="19" width="46" height="27.5"/>
+                                        <rect key="frame" x="165" y="19" width="46" height="28"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -212,6 +212,9 @@
                                                     <constraint firstAttribute="width" constant="45" id="2gH-Wz-xgZ"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="add-post"/>
+                                                <connections>
+                                                    <action selector="postBtnTapped:" destination="XbR-J1-FU1" eventType="touchUpInside" id="cLV-sT-fsk"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -247,10 +250,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shA-bL-OfZ" customClass="FancyView" customModule="Lingo_01" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8" width="343" height="332.5"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="333"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NG9-s0-6nG">
-                                                            <rect key="frame" x="8" y="8" width="327" height="284.5"/>
+                                                            <rect key="frame" x="8" y="8" width="327" height="285"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocl-Of-Hmo">
                                                                     <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
@@ -288,10 +291,10 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="9Cd-kp-Uc4">
-                                                                    <rect key="frame" x="0.0" y="68" width="327" height="158.5"/>
+                                                                    <rect key="frame" x="0.0" y="68" width="327" height="159"/>
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o0h-vi-yvf">
-                                                                    <rect key="frame" x="0.0" y="234.5" width="327" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="235" width="327" height="50"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="yKt-4a-iFQ"/>
@@ -305,13 +308,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-eI-O4F">
                                                             <rect key="frame" x="242" y="303" width="81" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-Ff-bog">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-Ff-bog">
                                                                     <rect key="frame" x="0.0" y="0.0" width="38" height="24"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-jJ-pXR">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-jJ-pXR">
                                                                     <rect key="frame" x="43" y="0.0" width="38" height="24"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -344,6 +347,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="o0h-vi-yvf" id="mob-5C-Hck"/>
+                                            <outlet property="likeImg" destination="J5x-sm-KDa" id="yHD-Ti-DzI"/>
                                             <outlet property="likeLbl" destination="YRG-jJ-pXR" id="qcz-kN-VVc"/>
                                             <outlet property="postImg" destination="9Cd-kp-Uc4" id="XZe-qq-uvC"/>
                                             <outlet property="profileImg" destination="kO9-hP-fTi" id="HeA-yu-Pvb"/>
@@ -368,6 +372,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captionField" destination="Cj6-ny-4R7" id="YSo-OJ-vdP"/>
                         <outlet property="imageAdd" destination="fdG-Uf-Bnw" id="MBJ-cF-ecf"/>
                         <outlet property="tableView" destination="y4g-cm-ag1" id="Hxr-yX-YXS"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="signOut" id="Gvk-cX-TPn"/>
