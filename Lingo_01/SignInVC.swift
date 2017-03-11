@@ -27,7 +27,7 @@ class SignInVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.stringForKey(KEY_UID){
-            performSegue(withIdentifier: "goToFeed", sender: nil)
+            performSegue(withIdentifier: "goToTab", sender: nil)
         }
     }
 
@@ -101,7 +101,7 @@ class SignInVC: UIViewController {
         DataService.ds.createFirebaseUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
         print("JESS: Data saved to keychain \(keychainResult)")
-        performSegue(withIdentifier: "goToFeed", sender: nil)
+        performSegue(withIdentifier: "goToTab", sender: nil)
     }
 }
 

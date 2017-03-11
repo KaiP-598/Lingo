@@ -146,6 +146,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let keychainResult = KeychainWrapper.removeObjectForKey(KEY_UID)
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "signOut", sender: nil)
+        
+        print (keychainResult)
     }
 
 }

@@ -23,6 +23,7 @@
 		4D71BA001E603C0200511559 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FF1E603C0200511559 /* PostCell.swift */; };
 		4D71BA031E60566500511559 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA021E60566500511559 /* DataService.swift */; };
 		4D71BA051E613C2300511559 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA041E613C2300511559 /* Post.swift */; };
+		4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432B1E73DA040051262C /* UserProfileVC.swift */; };
 		9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		4D71B9FF1E603C0200511559 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		4D71BA021E60566500511559 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4D71BA041E613C2300511559 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		4D8B432B1E73DA040051262C /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
 				4D71B9FB1E5F097800511559 /* FeedVC.swift */,
+				4D8B432B1E73DA040051262C /* UserProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -193,7 +196,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = WuKaipeng;
 				TargetAttributes = {
 					4D00DD131E4ECF10006BC916 = {
@@ -304,6 +307,7 @@
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
+				4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */,
 				4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */,
 				4D71BA001E603C0200511559 /* PostCell.swift in Sources */,
 			);
@@ -349,6 +353,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -398,6 +403,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -426,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lingo_01/Lingo_01.entitlements;
 				DEVELOPMENT_TEAM = D5XF8EMX6S;
@@ -441,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lingo_01/Lingo_01.entitlements;
 				DEVELOPMENT_TEAM = D5XF8EMX6S;
