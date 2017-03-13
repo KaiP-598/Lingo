@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var profileImage: CircieView!
     
     var imagePicker: UIImagePickerController!
+    var profileImageRef: FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +22,36 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
-
         
-    }
+        profileImageRef = DataService.ds.REF_USER_CURRENT.child("profile").child("profileImageUrl")
 
+        obtainProfileImage()
+    }
+    
+    func obtainProfileImage(){
+        //GET IMAGE FROM FIREBASE
+        profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let profileImageUrl = snapshot.value as? String ?? ""
+            let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
+            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print ("Log: Unable to download profile image")
+                } else{
+                    print ("Log: Profile image downloaded successfully")
+                    if let imgData = data {
+                        if let img = UIImage(data: imgData){
+                        self.profileImage.image = img
+                        }
+                    }
+                }
+            })
+        })
+    }
+    
+
+    
+    //change profile image
     @IBAction func profileImageBtnTapped(_ sender: Any) {
         present(imagePicker, animated: true, completion: nil)
     }
@@ -36,4 +64,46 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         }
         imagePicker.dismiss(animated:true, completion: nil)
     }
+    
+    @IBAction func updateBtnTapped(_ sender: Any) {
+        
+        guard let img = profileImage.image else {
+            print ("Log: Error with the user profile image")
+            return
+        }
+        
+        if let imgData = UIImageJPEGRepresentation(img, 0.2){
+            let imgUid = NSUUID().uuidString
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+        
+        
+        DataService.ds.REF_USER_PROFILE_IMAGES.child(imgUid).put(imgData, metadata: metadata) {(metaData, error) in
+            
+            if error != nil {
+                print ("Log: Unable to upload image to Firebase storage")
+            } else{
+                
+                print ("Log: Successfully uploaded image to Firebase storage")
+                let downloadURL = metaData?.downloadURL()?.absoluteString
+                if let url = downloadURL{
+                    self.postToFirebase(imgUrl: url)
+                }
+            }
+            
+            }
+    
+    }
+}
+    
+    func postToFirebase(imgUrl: String){
+        profileImageRef.setValue(imgUrl)
+        print ("Log: Profile Image successfully updated")
+        
+    }
+    
+
+    
+    
 }

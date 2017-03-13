@@ -24,6 +24,9 @@
 		4D71BA031E60566500511559 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA021E60566500511559 /* DataService.swift */; };
 		4D71BA051E613C2300511559 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA041E613C2300511559 /* Post.swift */; };
 		4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432B1E73DA040051262C /* UserProfileVC.swift */; };
+		4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432E1E764A950051262C /* UserNameVC.swift */; };
+		4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */; };
+		4D8B43361E7686950051262C /* UserNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43351E7686950051262C /* UserNameCell.swift */; };
 		9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +51,9 @@
 		4D71BA021E60566500511559 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4D71BA041E613C2300511559 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D8B432B1E73DA040051262C /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		4D8B432E1E764A950051262C /* UserNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameVC.swift; sourceTree = "<group>"; };
+		4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountDetailVC.swift; sourceTree = "<group>"; };
+		4D8B43351E7686950051262C /* UserNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameCell.swift; sourceTree = "<group>"; };
 		8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 		4D2E459A1E4ED2400048E2DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D8B43321E76854B0051262C /* UserProfileViews */,
 				4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */,
 				4D2E459C1E4EE74F0048E2DD /* FancyView.swift */,
 				4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */,
@@ -135,9 +142,9 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4D8B432D1E764A7B0051262C /* UserProfile */,
 				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
 				4D71B9FB1E5F097800511559 /* FeedVC.swift */,
-				4D8B432B1E73DA040051262C /* UserProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -156,6 +163,24 @@
 				4D71BA021E60566500511559 /* DataService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		4D8B432D1E764A7B0051262C /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				4D8B432B1E73DA040051262C /* UserProfileVC.swift */,
+				4D8B432E1E764A950051262C /* UserNameVC.swift */,
+				4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		4D8B43321E76854B0051262C /* UserProfileViews */ = {
+			isa = PBXGroup;
+			children = (
+				4D8B43351E7686950051262C /* UserNameCell.swift */,
+			);
+			name = UserProfileViews;
 			sourceTree = "<group>";
 		};
 		83F41F3BE7BC71AF85B7FB8E /* Frameworks */ = {
@@ -307,7 +332,10 @@
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
+				4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */,
+				4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */,
 				4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */,
+				4D8B43361E7686950051262C /* UserNameCell.swift in Sources */,
 				4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */,
 				4D71BA001E603C0200511559 /* PostCell.swift in Sources */,
 			);
