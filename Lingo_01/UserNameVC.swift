@@ -14,27 +14,26 @@ class UserNameVC: UIViewController {
     @IBOutlet weak var nameField: FancyField!
     
     var userNameRef: FIRDatabaseReference!
+    var userName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         userNameRef = DataService.ds.REF_USER_CURRENT.child("profile").child("username")
-        obtainUserName()
+
     }
     
-    func obtainUserName(){
-        //get user name from firebase
+    override func viewDidAppear(_ animated: Bool) {
         
-        userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let userName = snapshot.value as? String ?? ""
-            self.nameField.text = userName
-        })
-        
+        if let userNameText = userName{
+            self.nameField.text = userNameText
+        }
     }
     
 
     @IBAction func saveBtnPressed(_ sender: Any) {
         
+        //update user name
         guard let userName = nameField.text else {
             return
         }

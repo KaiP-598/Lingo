@@ -308,13 +308,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-eI-O4F">
                                                             <rect key="frame" x="242" y="303" width="81" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-Ff-bog">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO1-Ff-bog">
                                                                     <rect key="frame" x="0.0" y="0.0" width="38" height="24"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-jJ-pXR">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="8888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-jJ-pXR">
                                                                     <rect key="frame" x="43" y="0.0" width="38" height="24"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -350,7 +350,7 @@
                                             <outlet property="likeImg" destination="J5x-sm-KDa" id="yHD-Ti-DzI"/>
                                             <outlet property="likeLbl" destination="YRG-jJ-pXR" id="qcz-kN-VVc"/>
                                             <outlet property="postImg" destination="9Cd-kp-Uc4" id="XZe-qq-uvC"/>
-                                            <outlet property="profileImg" destination="kO9-hP-fTi" id="HeA-yu-Pvb"/>
+                                            <outlet property="profileImg" destination="kO9-hP-fTi" id="WEc-Ye-SR0"/>
                                             <outlet property="usernameLbl" destination="Jtw-x2-eni" id="nVh-A2-aUM"/>
                                         </connections>
                                     </tableViewCell>
@@ -493,7 +493,6 @@
         <!--User Account DetailVC-->
         <scene sceneID="oyO-U9-lRO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cPy-Ir-Qyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="niO-Xk-cf6" customClass="UserAccountDetailVC" customModule="Lingo_01" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rt9-kf-Jd0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
@@ -506,7 +505,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Seu-JO-nUM" id="Rlq-4H-ec2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk9-OB-9Ps">
@@ -526,16 +525,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dNS-Fd-J9A" kind="show" id="YnQ-hn-wx7"/>
+                                            <segue destination="dNS-Fd-J9A" kind="show" identifier="userName" id="YnQ-hn-wx7"/>
                                         </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="456" editingAccessoryType="detailButton" id="v61-W1-zq0">
-                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v61-W1-zq0" id="4uN-2H-7zi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -549,6 +540,7 @@
                         <outlet property="nameLabel" destination="yk9-OB-9Ps" id="Xpe-UE-HEO"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPy-Ir-Qyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="977" y="2534"/>
         </scene>
@@ -610,6 +602,7 @@
         <!--View Controller-->
         <scene sceneID="oBv-hk-Cpi">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEY-cJ-shN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="q3g-o5-UO4" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ouh-wg-g6x"/>
@@ -627,7 +620,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dEY-cJ-shN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1879" y="1787"/>
         </scene>

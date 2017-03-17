@@ -11,15 +11,19 @@ import Firebase
 
 class PostCell: UITableViewCell {
     
-    @IBOutlet weak var profileImg: UIImageView!
+    
+    @IBOutlet weak var profileImg: CircieView!
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var postImg: UIImageView!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var likeLbl: UILabel!
     @IBOutlet weak var likeImg: UIImageView!
     
+    
     var post: Post!
     var likesRef: FIRDatabaseReference!
+    var userNameRef: FIRDatabaseReference!
+    var userImageRef: FIRDatabaseReference!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,8 +38,49 @@ class PostCell: UITableViewCell {
     func configureCell(post: Post, img: UIImage? = nil) {
         self.post = post
         likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+        
         self.caption.text = post.caption
         self.likeLbl.text = "\(post.likes)"
+        
+        
+        if (post.authorID != nil) {
+            print ("xPost: \(post.caption)")
+            userImageRef = DataService.ds.REF_USERS.child(post.authorID!).child("profile").child("profileImageUrl")
+            userNameRef = DataService.ds.REF_USERS.child(post.authorID!).child("profile").child("username")
+            
+            //GET USERNAME FROM FIREBASE
+            userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                let userName = snapshot.value as? String ?? ""
+                self.usernameLbl.text = userName
+            })
+            
+            //GET IMAGE FROM FIREBASE
+            userImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                let profileImageUrl = snapshot.value as? String ?? ""
+                let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
+                ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                    if error != nil {
+                        print ("Log: Unable to download profile image")
+                    } else{
+                        print ("Log: Profile image downloaded successfully")
+                        if let imgData = data {
+                            if let userImage = UIImage(data: imgData){
+                                self.profileImg.image = userImage
+                                FeedVC.imageCache.setObject(userImage, forKey: profileImageUrl as NSString)
+                            }
+                        }
+                    }
+                })
+            })
+            
+        } else{
+            self.profileImg.image = UIImage(named: "profile")
+            self.usernameLbl.text = "Anonymous"
+        }
+        
+        
+        
         
         if img != nil{
             self.postImg.image = img
@@ -46,7 +91,7 @@ class PostCell: UITableViewCell {
                 if error != nil {
                     print ("JESS: Unable to download image from Firebase storage")
                 } else{
-                    print ("JESS: Image downloade successful")
+                    print ("JESS: Image downloaded successful")
                     if let imgData = data {
                         if let img = UIImage(data: imgData){
                             self.postImg.image = img

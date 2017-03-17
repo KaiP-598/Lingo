@@ -19,6 +19,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     var imageSelected = false
+    var currentUser: FIRDatabaseReference!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
 
     override func viewDidLoad() {
@@ -30,6 +31,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
+        
+        currentUser = DataService.ds.REF_USER_CURRENT
         
         DataService.ds.REF_POSTS.observe(.value, with: {(snapshot) in
             
@@ -92,7 +95,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let post: Dictionary<String, AnyObject> = [
             "caption": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
-            "likes": 0 as AnyObject
+            "likes": 0 as AnyObject,
+            "userID": currentUser.key as AnyObject
         
         ]
         
