@@ -27,6 +27,12 @@
 		4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432E1E764A950051262C /* UserNameVC.swift */; };
 		4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */; };
 		4D8B43361E7686950051262C /* UserNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43351E7686950051262C /* UserNameCell.swift */; };
+		4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */; };
+		4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */; };
+		4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DC1E7FFAA100FFC5E5 /* GFGeoHash.m */; };
+		4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DE1E7FFAA100FFC5E5 /* GFGeoHashQuery.m */; };
+		4DE099E51E7FFAA100FFC5E5 /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099E01E7FFAA100FFC5E5 /* GFQuery.m */; };
+		4DE099E91E80BE8300FFC5E5 /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */; };
 		9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +60,23 @@
 		4D8B432E1E764A950051262C /* UserNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameVC.swift; sourceTree = "<group>"; };
 		4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountDetailVC.swift; sourceTree = "<group>"; };
 		4D8B43351E7686950051262C /* UserNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameCell.swift; sourceTree = "<group>"; };
+		4DE099D11E7FFAA100FFC5E5 /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
+		4DE099D21E7FFAA100FFC5E5 /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
+		4DE099D31E7FFAA100FFC5E5 /* GFQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFQuery.h; sourceTree = "<group>"; };
+		4DE099D41E7FFAA100FFC5E5 /* GFRegionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFRegionQuery.h; sourceTree = "<group>"; };
+		4DE099D51E7FFAA100FFC5E5 /* GeoFire-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire-Prefix.pch"; sourceTree = "<group>"; };
+		4DE099D71E7FFAA100FFC5E5 /* GeoFire+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire+Private.h"; sourceTree = "<group>"; };
+		4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFire.m; sourceTree = "<group>"; };
+		4DE099D91E7FFAA100FFC5E5 /* GFBase32Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFBase32Utils.h; sourceTree = "<group>"; };
+		4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFBase32Utils.m; sourceTree = "<group>"; };
+		4DE099DB1E7FFAA100FFC5E5 /* GFGeoHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHash.h; sourceTree = "<group>"; };
+		4DE099DC1E7FFAA100FFC5E5 /* GFGeoHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHash.m; sourceTree = "<group>"; };
+		4DE099DD1E7FFAA100FFC5E5 /* GFGeoHashQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHashQuery.h; sourceTree = "<group>"; };
+		4DE099DE1E7FFAA100FFC5E5 /* GFGeoHashQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHashQuery.m; sourceTree = "<group>"; };
+		4DE099DF1E7FFAA100FFC5E5 /* GFQuery+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GFQuery+Private.h"; sourceTree = "<group>"; };
+		4DE099E01E7FFAA100FFC5E5 /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
+		4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lingo-Bridging-Header.h"; sourceTree = "<group>"; };
+		4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
 		8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4D71B9FA1E55DA2900511559 /* Lingo_01.entitlements */,
+				4DE099CF1E7FFAA100FFC5E5 /* GeoFire */,
 				4D71BA011E60564C00511559 /* Services */,
 				4D2E45A01E4EEAC40048E2DD /* Utility */,
 				4D2E459B1E4ED25E0048E2DD /* Controller */,
@@ -113,6 +137,7 @@
 				4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */,
 				4D00DD231E4ECF11006BC916 /* Info.plist */,
 				4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */,
+				4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */,
 			);
 			path = Lingo_01;
 			sourceTree = "<group>";
@@ -142,6 +167,7 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4DE099E71E80BE6000FFC5E5 /* AddPost */,
 				4D8B432D1E764A7B0051262C /* UserProfile */,
 				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
 				4D71B9FB1E5F097800511559 /* FeedVC.swift */,
@@ -181,6 +207,52 @@
 				4D8B43351E7686950051262C /* UserNameCell.swift */,
 			);
 			name = UserProfileViews;
+			sourceTree = "<group>";
+		};
+		4DE099CF1E7FFAA100FFC5E5 /* GeoFire */ = {
+			isa = PBXGroup;
+			children = (
+				4DE099D01E7FFAA100FFC5E5 /* API */,
+				4DE099D51E7FFAA100FFC5E5 /* GeoFire-Prefix.pch */,
+				4DE099D61E7FFAA100FFC5E5 /* Implementation */,
+			);
+			path = GeoFire;
+			sourceTree = "<group>";
+		};
+		4DE099D01E7FFAA100FFC5E5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4DE099D11E7FFAA100FFC5E5 /* GeoFire.h */,
+				4DE099D21E7FFAA100FFC5E5 /* GFCircleQuery.h */,
+				4DE099D31E7FFAA100FFC5E5 /* GFQuery.h */,
+				4DE099D41E7FFAA100FFC5E5 /* GFRegionQuery.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4DE099D61E7FFAA100FFC5E5 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				4DE099D71E7FFAA100FFC5E5 /* GeoFire+Private.h */,
+				4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */,
+				4DE099D91E7FFAA100FFC5E5 /* GFBase32Utils.h */,
+				4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */,
+				4DE099DB1E7FFAA100FFC5E5 /* GFGeoHash.h */,
+				4DE099DC1E7FFAA100FFC5E5 /* GFGeoHash.m */,
+				4DE099DD1E7FFAA100FFC5E5 /* GFGeoHashQuery.h */,
+				4DE099DE1E7FFAA100FFC5E5 /* GFGeoHashQuery.m */,
+				4DE099DF1E7FFAA100FFC5E5 /* GFQuery+Private.h */,
+				4DE099E01E7FFAA100FFC5E5 /* GFQuery.m */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		4DE099E71E80BE6000FFC5E5 /* AddPost */ = {
+			isa = PBXGroup;
+			children = (
+				4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */,
+			);
+			name = AddPost;
 			sourceTree = "<group>";
 		};
 		83F41F3BE7BC71AF85B7FB8E /* Frameworks */ = {
@@ -323,15 +395,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
+				4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
 				4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */,
 				4D71BA051E613C2300511559 /* Post.swift in Sources */,
 				4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */,
+				4DE099E91E80BE8300FFC5E5 /* AddPostVC.swift in Sources */,
+				4DE099E51E7FFAA100FFC5E5 /* GFQuery.m in Sources */,
 				4D00DD181E4ECF11006BC916 /* AppDelegate.swift in Sources */,
 				4D71BA031E60566500511559 /* DataService.swift in Sources */,
+				4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */,
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
+				4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */,
+				4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */,
 				4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */,
 				4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */,
 				4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */,
@@ -404,11 +482,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lingo_01/Lingo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -448,9 +527,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lingo_01/Lingo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};

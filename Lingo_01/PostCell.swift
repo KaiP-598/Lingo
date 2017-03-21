@@ -18,7 +18,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var likeLbl: UILabel!
     @IBOutlet weak var likeImg: UIImageView!
-    
+    @IBOutlet weak var postImgHeightConstraint: NSLayoutConstraint!
     
     var post: Post!
     var likesRef: FIRDatabaseReference!
@@ -27,7 +27,7 @@ class PostCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
         tap.numberOfTapsRequired = 1
         likeImg.addGestureRecognizer(tap)
@@ -41,6 +41,8 @@ class PostCell: UITableViewCell {
         
         self.caption.text = post.caption
         self.likeLbl.text = "\(post.likes)"
+        self.caption.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        
         
         
         if (post.authorID != nil) {
@@ -84,6 +86,9 @@ class PostCell: UITableViewCell {
         
         if img != nil{
             self.postImg.image = img
+//            if self.postImg.frame.size.width < (img?.size.width)!{
+//                self.postImgHeightConstraint.constant = self.postImg.frame.size.width / (img?.size.width)! * (img?.size.height)!
+//            }
         } else{
             
             let ref = FIRStorage.storage().reference(forURL: post.imageUrl)
@@ -94,7 +99,13 @@ class PostCell: UITableViewCell {
                     print ("JESS: Image downloaded successful")
                     if let imgData = data {
                         if let img = UIImage(data: imgData){
+//                            if self.postImg.frame.size.height < (img.size.height){
+//                                self.postImgWidthConstraint.constant = self.postImg.frame.size.height / (img.size.height) * (img.size.width)
+//                            }
                             self.postImg.image = img
+//                            if self.postImg.frame.size.width < (img.size.width){
+//                                self.postImgHeightConstraint.constant = self.postImg.frame.size.width / (img.size.width) * (img.size.height)
+//                            }
                             FeedVC.imageCache.setObject(img, forKey: post.imageUrl as NSString)
                         }
                     }
@@ -105,7 +116,7 @@ class PostCell: UITableViewCell {
         //observe single event for the likes
         likesRef.observeSingleEvent(of: .value, with: {(snapshot) in
             if let _ = snapshot.value as? NSNull {
-                self.likeImg.image = UIImage(named: "empyt-heart")
+                self.likeImg.image = UIImage(named: "empty-heart")
             } else {
                 self.likeImg.image = UIImage(named: "filled-heart")
             }
@@ -127,5 +138,7 @@ class PostCell: UITableViewCell {
             
         })
     }
+    
+
     
 }

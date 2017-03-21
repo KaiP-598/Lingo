@@ -34,6 +34,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         currentUser = DataService.ds.REF_USER_CURRENT
         
+        
         DataService.ds.REF_POSTS.observe(.value, with: {(snapshot) in
             
             self.posts = []
@@ -50,6 +51,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             self.tableView.reloadData()
         })
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         tableView.rowHeight = UITableViewAutomaticDimension
+         tableView.estimatedRowHeight = 400
+        
+         print("Log: Triggered")
+
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -64,8 +73,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let post = posts[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
-            
-      //      var img: UIImage!
             
             if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString){
                 cell.configureCell(post: post, img: img)
@@ -153,5 +160,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         print (keychainResult)
     }
+    
+    @IBAction func test(_ sender: Any) {
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
 
 }
