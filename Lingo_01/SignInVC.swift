@@ -21,6 +21,7 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        print ("ddsa: \(MASK_URL)")
         
     }
     
@@ -63,7 +64,7 @@ class SignInVC: UIViewController {
             } else {
                 print ("JESS: Successfully authenticated with Firebase")
                 if let user = user {
-                    let userData = ["provider":credential.provider]
+                    let userData = ["provider":credential.provider, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
                     self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
@@ -86,7 +87,7 @@ class SignInVC: UIViewController {
                         } else{
                             print ("JESS: Successfully authenticated with Firebase")
                             if let user = user {
-                                let userData = ["provider":user.providerID]
+                                let userData = ["provider":user.providerID, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
                                 self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
@@ -97,7 +98,7 @@ class SignInVC: UIViewController {
         
     }
     
-    func completeSignIn(id: String, userData: Dictionary<String, String>){
+    func completeSignIn(id: String, userData: Dictionary<String, Any>){
         DataService.ds.createFirebaseUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
         print("JESS: Data saved to keychain \(keychainResult)")

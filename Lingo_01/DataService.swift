@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 
 let DB_BASE = FIRDatabase.database().reference()
 let STORAGE_BASE = FIRStorage.storage().reference()
+let MASK_URL = "https://firebasestorage.googleapis.com/v0/b/lingo-79b76.appspot.com/o/user-profile-pics%2FDefaultMask.jpg?alt=media&token=2a6832de-fcf1-4838-9ef8-5d270152cdbd"
 
 class DataService{
     
@@ -21,7 +22,9 @@ class DataService{
     //DB References
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("posts")
+    private var _REF_POSTS_LOCATIONS = DB_BASE.child("posts_locations")
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_USERS_LOCATION = DB_BASE.child("users_locations")
     
     //Storage references
     private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
@@ -35,6 +38,14 @@ class DataService{
         return _REF_POSTS
     }
     
+    var REF_POSTS_LOCATIONS: FIRDatabaseReference {
+        return _REF_POSTS_LOCATIONS
+    }
+    
+    var REF_POSTS_LOC_DATE_KEY: FIRDatabaseReference {
+        return _REF_POSTS_LOCATIONS.child("\(PostLocationDateKey.manager.getCurrentDateKey())")
+    }
+    
     var REF_USERS: FIRDatabaseReference {
         return _REF_USERS
     }
@@ -43,6 +54,10 @@ class DataService{
         let uid = KeychainWrapper.stringForKey(KEY_UID)
         let user = REF_USERS.child(uid!)
         return user
+    }
+    
+    var REF_USERS_LOCATION: FIRDatabaseReference {
+        return _REF_USERS_LOCATION
     }
     
     var REF_POST_IMAGES: FIRStorageReference{
@@ -54,7 +69,8 @@ class DataService{
     }
     
     
-    func createFirebaseUser(uid: String, userData: Dictionary<String, String>) {
+    
+    func createFirebaseUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
 }

@@ -23,6 +23,9 @@
 		4D71BA001E603C0200511559 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FF1E603C0200511559 /* PostCell.swift */; };
 		4D71BA031E60566500511559 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA021E60566500511559 /* DataService.swift */; };
 		4D71BA051E613C2300511559 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA041E613C2300511559 /* Post.swift */; };
+		4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */; };
+		4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */; };
+		4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */; };
 		4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432B1E73DA040051262C /* UserProfileVC.swift */; };
 		4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432E1E764A950051262C /* UserNameVC.swift */; };
 		4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */; };
@@ -33,6 +36,7 @@
 		4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DE1E7FFAA100FFC5E5 /* GFGeoHashQuery.m */; };
 		4DE099E51E7FFAA100FFC5E5 /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099E01E7FFAA100FFC5E5 /* GFQuery.m */; };
 		4DE099E91E80BE8300FFC5E5 /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */; };
+		4DE099EC1E84017D00FFC5E5 /* TabBarHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099EB1E84017D00FFC5E5 /* TabBarHeightView.swift */; };
 		9F7A5E9D4E86031285B08E49 /* Pods_Lingo_01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,10 @@
 		4D71B9FF1E603C0200511559 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		4D71BA021E60566500511559 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4D71BA041E613C2300511559 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocationKey.swift; sourceTree = "<group>"; };
+		4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDownloadHelper.swift; sourceTree = "<group>"; };
+		4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeStampHelper.swift; sourceTree = "<group>"; };
+		4D7C8B0C1E99DC5C00D85B13 /* monashLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = monashLocation.gpx; sourceTree = "<group>"; };
 		4D8B432B1E73DA040051262C /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		4D8B432E1E764A950051262C /* UserNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameVC.swift; sourceTree = "<group>"; };
 		4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountDetailVC.swift; sourceTree = "<group>"; };
@@ -77,6 +85,8 @@
 		4DE099E01E7FFAA100FFC5E5 /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
 		4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lingo-Bridging-Header.h"; sourceTree = "<group>"; };
 		4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
+		4DE099EB1E84017D00FFC5E5 /* TabBarHeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarHeightView.swift; sourceTree = "<group>"; };
+		4DE099ED1E863BC500FFC5E5 /* claytonLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = claytonLocation.gpx; sourceTree = "<group>"; };
 		8B8D8A6A43B10A2678352229 /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF623E23DB33D23D6FD2545 /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DA1F5657C8656A8559AD0C /* Pods-Lingo_01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				4D71B9FA1E55DA2900511559 /* Lingo_01.entitlements */,
+				4D7C8B071E8D31DD00D85B13 /* FirebaseDownloadHelper */,
 				4DE099CF1E7FFAA100FFC5E5 /* GeoFire */,
 				4D71BA011E60564C00511559 /* Services */,
 				4D2E45A01E4EEAC40048E2DD /* Utility */,
@@ -138,6 +149,8 @@
 				4D00DD231E4ECF11006BC916 /* Info.plist */,
 				4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */,
 				4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */,
+				4DE099ED1E863BC500FFC5E5 /* claytonLocation.gpx */,
+				4D7C8B0C1E99DC5C00D85B13 /* monashLocation.gpx */,
 			);
 			path = Lingo_01;
 			sourceTree = "<group>";
@@ -153,6 +166,7 @@
 		4D2E459A1E4ED2400048E2DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4DE099EA1E84015400FFC5E5 /* TabBarView */,
 				4D8B43321E76854B0051262C /* UserProfileViews */,
 				4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */,
 				4D2E459C1E4EE74F0048E2DD /* FancyView.swift */,
@@ -187,8 +201,18 @@
 			isa = PBXGroup;
 			children = (
 				4D71BA021E60566500511559 /* DataService.swift */,
+				4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */,
+				4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		4D7C8B071E8D31DD00D85B13 /* FirebaseDownloadHelper */ = {
+			isa = PBXGroup;
+			children = (
+				4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */,
+			);
+			name = FirebaseDownloadHelper;
 			sourceTree = "<group>";
 		};
 		4D8B432D1E764A7B0051262C /* UserProfile */ = {
@@ -253,6 +277,14 @@
 				4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */,
 			);
 			name = AddPost;
+			sourceTree = "<group>";
+		};
+		4DE099EA1E84015400FFC5E5 /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				4DE099EB1E84017D00FFC5E5 /* TabBarHeightView.swift */,
+			);
+			name = TabBarView;
 			sourceTree = "<group>";
 		};
 		83F41F3BE7BC71AF85B7FB8E /* Frameworks */ = {
@@ -394,15 +426,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */,
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
 				4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
+				4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */,
 				4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */,
 				4D71BA051E613C2300511559 /* Post.swift in Sources */,
 				4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */,
 				4DE099E91E80BE8300FFC5E5 /* AddPostVC.swift in Sources */,
 				4DE099E51E7FFAA100FFC5E5 /* GFQuery.m in Sources */,
 				4D00DD181E4ECF11006BC916 /* AppDelegate.swift in Sources */,
+				4DE099EC1E84017D00FFC5E5 /* TabBarHeightView.swift in Sources */,
+				4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */,
 				4D71BA031E60566500511559 /* DataService.swift in Sources */,
 				4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */,
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,

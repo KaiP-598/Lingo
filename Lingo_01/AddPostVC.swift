@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -17,13 +18,20 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     var imagePicker: UIImagePickerController!
     var imageSelected = false
     var currentUser: FIRDatabaseReference!
+    var currentUserLocation: CLLocation?
+    var geoFirePost: GeoFire!
+    var geoFirePostNextDay: GeoFire!
+    
+    let numDays = PostLocationDateKey.manager.getCurrentDateKey()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initImagePicker()
         currentUser = DataService.ds.REF_USER_CURRENT
-
+        let numDayPlusOne = String(Int(numDays)! + 1)
+        geoFirePost = GeoFire(firebaseRef:DataService.ds.REF_POSTS_LOCATIONS.child(numDays))
+        geoFirePostNextDay = GeoFire(firebaseRef:DataService.ds.REF_POSTS_LOCATIONS.child(numDayPlusOne))
     }
     
     func initImagePicker(){
@@ -43,17 +51,31 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     }
     
     func postToFirebase(imgUrl: String){
+        let timeInt = Int(Date().timeIntervalSince1970)
         let post: Dictionary<String, AnyObject> = [
             "caption": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
             "likes": 0 as AnyObject,
-            "userID": currentUser.key as AnyObject
-            
+            "userID": currentUser.key as AnyObject,
+            "timeStamp": "\(timeInt)" as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
         firebasePost.setValue(post)
-        
+        geoFirePost.setLocation(currentUserLocation, forKey: firebasePost.key) { (error) in
+            if error != nil{
+                print ("unable to update location: \(error)")
+            } else {
+                print ("post location updated successfully")
+            }
+        }
+        geoFirePostNextDay.setLocation(currentUserLocation, forKey: firebasePost.key) { (error) in
+            if error != nil{
+                print ("unable to update location: \(error)")
+            } else {
+                print ("post location updated successfully")
+            }
+        }
         captionField.text = ""
         imageSelected = false
         addedImage.image = UIImage(named: "add-image")
