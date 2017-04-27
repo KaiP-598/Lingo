@@ -11,7 +11,7 @@ import SwiftKeychainWrapper
 import Firebase
 import CoreData
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate{
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, SendPostToFeedVcDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircieView!
@@ -26,7 +26,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var geoFirePost: GeoFire!
     var currentUserLocation: CLLocation!
     var postDownloader = PostDownloader()
-    var firstTimeForUserLocationSettup = true
+    var firstTimeForUserLocationSettup = false
+    var loadedInitialPosts = false
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
 
@@ -39,17 +40,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         geoFireUser = GeoFire(firebaseRef: DataService.ds.REF_USERS_LOCATION)
         geoFirePost = GeoFire(firebaseRef: DataService.ds.REF_POSTS_LOCATIONS)
         
-        PostDownloader.getPostKeys { (postKeys) in
-            PostDownloader.getPost(postKeys: postKeys, completionHandler: { (posts) in
-                self.posts = posts
-                self.tableView.reloadData()
-            })
-        }
+//        PostDownloader.getPostKeys { (postKeys) in
+//            PostDownloader.getPost(postKeys: postKeys, completionHandler: { (posts) in
+//                self.posts = posts
+//                self.tableView.reloadData()
+//            })
+//        }
         
-    
+        postDownloader.delegate = self
         
         
-        
+        setupUserLocation()
 //        DataService.ds.REF_POSTS.observe(.value, with: {(snapshot) in
 //            
 //            self.posts = []
@@ -67,10 +68,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setupUserLocation()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
-        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,6 +99,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     func setupUserLocation(){
+        print("postAddedAgagin")
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -115,18 +115,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation: CLLocation = locations[locations.count - 1]
         
-        print ("location lat: \(userLocation.coordinate.latitude)")
-        print ("location long: \(userLocation.coordinate.longitude)")
         currentUserLocation = userLocation
         updateUserLocationToFirebase(userLocation: userLocation)
-        if !firstTimeForUserLocationSettup{
-            postDownloader.getNearbyPosts(center: currentUserLocation, radius: 5.5) { (posts) in
-                for p in posts{
-                    // print ("debugging: \(p.postKey)")
-                }
-            }
+        if (loadedInitialPosts){
+            postDownloader.circleQuery.center = currentUserLocation
+        } else{
+            //if !firstTimeForUserLocationSettup{
+                print ("postAdded: \(currentUserLocation)")
+                posts = []
+                tableView.reloadData()
+                postDownloader.getNearbyPosts(center: currentUserLocation, radius: 5.5)
+                postDownloader.getExitedPosts(center: currentUserLocation, radius: 5.5)
+                loadedInitialPosts = true
+            //}
         }
-        firstTimeForUserLocationSettup = false
+        
+       // firstTimeForUserLocationSettup = false
         
         //locationManager.stopUpdatingLocation()
         
@@ -163,6 +167,32 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
+    func sendPost(post: Post) {
+        
+        print ("postAddedSendPost:\(posts)")
+        tableView.beginUpdates()
+        posts.insert(post, at: 0)
+        let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    func deletePost(postKey: String){
+        for (index, post) in posts.enumerated(){
+            if postKey == post.postKey{
+                deletePostAtRow(postIndex: index)
+            }
+        }
+    }
+    
+    func deletePostAtRow(postIndex: Int){
+        tableView.beginUpdates()
+        posts.remove(at: postIndex)
+        let indexPath: IndexPath = IndexPath(row: postIndex, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toAddPostVC"){
             let addPostVC = segue.destination as! AddPostVC
@@ -184,7 +214,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     @IBAction func test2(_ sender: Any) {
-        self.testBtnLbl.backgroundColor = UIColor.red
+       self.tableView.reloadData()
     }
 
 }

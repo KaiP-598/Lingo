@@ -212,7 +212,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="753" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="hC5-KC-xSA">
                                                             <rect key="frame" x="8" y="8" width="85" height="35"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="kO9-hP-fTi" customClass="CircieView" customModule="Lingo_01" customModuleProvider="target">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grey_bg" translatesAutoresizingMaskIntoConstraints="NO" id="kO9-hP-fTi" customClass="CircieView" customModule="Lingo_01" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="35" id="48U-Wc-KBG"/>
@@ -231,7 +231,7 @@
                                                                 <constraint firstAttribute="height" constant="35" id="QeV-HP-xPL"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="9Cd-kp-Uc4">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="white_bg" translatesAutoresizingMaskIntoConstraints="NO" id="9Cd-kp-Uc4">
                                                             <rect key="frame" x="0.0" y="48" width="375" height="262"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="262" id="59R-rV-spN"/>
@@ -600,7 +600,7 @@
                             <constraint firstItem="eqs-jN-67G" firstAttribute="top" secondItem="Qrh-ht-BLH" secondAttribute="bottom" id="vSF-iQ-6lL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="5E9E6555-7135-44D7-A503-0704475E7508" selectedImage="5E9E6555-7135-44D7-A503-0704475E7508" id="jll-ZF-RiH">
+                    <tabBarItem key="tabBarItem" title="" image="BC46934D-A988-466A-8922-D201768D1ACF" selectedImage="BC46934D-A988-466A-8922-D201768D1ACF" id="jll-ZF-RiH">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Profile" id="79c-qi-ESs">
@@ -633,7 +633,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Seu-JO-nUM" id="Rlq-4H-ec2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk9-OB-9Ps">
@@ -771,7 +771,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5E9E6555-7135-44D7-A503-0704475E7508" width="22" height="20">
+        <image name="BC46934D-A988-466A-8922-D201768D1ACF" width="22" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -865,6 +865,7 @@ EOcQ7BDuEPAQ9RD9EQARBRENERARIhElESoAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAARLA
         <image name="add_feeling_btn" width="19" height="19"/>
         <image name="devslopes-logo" width="150" height="94"/>
         <image name="f" width="352" height="328"/>
-        <image name="profile" width="113" height="155"/>
+        <image name="grey_bg" width="900" height="600"/>
+        <image name="white_bg" width="317" height="159"/>
     </resources>
 </document>

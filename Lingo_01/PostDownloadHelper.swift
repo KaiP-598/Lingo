@@ -9,42 +9,40 @@
 import Foundation
 import Firebase
 
+protocol SendPostToFeedVcDelegate{
+    func sendPost(post: Post)
+    func deletePost(postKey: String)
+}
 class PostDownloader{
     
     let postLocKey = PostLocationDateKey.manager.getCurrentDateKey()
     var circleQuery = GeoFire(firebaseRef: DataService.ds.REF_POSTS_LOC_DATE_KEY).query(at:nil, withRadius:5)!
-
+    var delegate: SendPostToFeedVcDelegate?
 
     
-    func getNearbyPosts(center: CLLocation, radius: Double, completionHandler: @escaping ([Post])->()){
-        
+    func getNearbyPosts(center: CLLocation, radius: Double){
         circleQuery.center = center
         circleQuery.radius = radius
-        let dispatchGroup = DispatchGroup()
-        let arrayQueue = DispatchQueue(label: "arrayQueue")
-        var posts = [Post]()
         var queryHandle = circleQuery.observe(.keyEntered) { (postKey, location) in
-            //dispatchGroup.enter()
+            print ("postAdded:\(postKey)")
             let postRef = DataService.ds.REF_POSTS.child(postKey!)
             postRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let postDict = snapshot.value as? Dictionary<String, Any>{
                     let key = snapshot.key
                     let post = Post(postKey: key, postData: postDict)
-                    arrayQueue.sync {
-                        posts.append(post)
-                    }
-                    
+                    self.delegate?.sendPost(post: post)
                 }
-                print ("debuggingg: \(posts)")
-                //dispatchGroup.leave()
             })
         }
-        dispatchGroup.notify(queue: DispatchQueue.main) {
-           // print ("debuggingg: \(posts)")
-            completionHandler(posts)
+    }
+    
+    func getExitedPosts(center: CLLocation, radius: Double){
+        circleQuery.center = center
+        circleQuery.radius = radius
+        var queryHandle = circleQuery.observe(.keyExited) { (postKey, location) in
+            print ("postkey:\(postKey)")
+            self.delegate?.deletePost(postKey: postKey!)
         }
-        
-
     }
     static func getPostKeys(completionHandler: @escaping ([String])->()){
         //TODO CIRCLE QUERY

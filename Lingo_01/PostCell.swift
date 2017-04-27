@@ -26,6 +26,7 @@ class PostCell: UITableViewCell {
     var likesRef: FIRDatabaseReference!
     var userNameRef: FIRDatabaseReference!
     var userImageRef: FIRDatabaseReference!
+    var postRef: FIRDatabaseReference!
     var geoFirePost: GeoFire!
     
     override func awakeFromNib() {
@@ -41,6 +42,7 @@ class PostCell: UITableViewCell {
     func configureCell(post: Post, userLocation: CLLocation? = nil, img: UIImage? = nil) {
         self.post = post
         likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+        postRef = DataService.ds.REF_POSTS.child(self.post.postKey)
         let numDays = PostLocationDateKey.manager.getCurrentDateKey()
         geoFirePost = GeoFire(firebaseRef: DataService.ds.REF_POSTS_LOCATIONS.child(numDays))
         
@@ -150,14 +152,53 @@ class PostCell: UITableViewCell {
         likesRef.observeSingleEvent(of: .value, with: {(snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.likeImg.image = UIImage(named: "Hearts_Filled")
-                self.post.adjustLikes(addLike: true)
+                self.adjustLike(addLike: true)
                 self.likesRef.setValue(true)
             } else {
                 self.likeImg.image = UIImage(named: "Hearts_Empty")
-                self.post.adjustLikes(addLike: false)
+                self.adjustLike(addLike: false)
                 self.likesRef.removeValue()
             }
             
+        })
+    }
+    
+    //quicker UI response but not effective
+    func adjustLike(addLike: Bool){
+        var likes = Int(self.likeLbl.text!)
+        if addLike{
+            likes = likes! + 1
+        } else {
+            likes = likes! - 1
+        }
+        self.likeLbl.text = "\(likes!)"
+        postRef.child("likes").observeSingleEvent(of: .value, with: { (snapshot) in
+            var postLikes: Int!
+            if let like = snapshot.value as? Int{
+                if addLike{
+                    postLikes = like + 1
+                } else {
+                    postLikes = like - 1
+                }
+                self.postRef.child("likes").setValue(postLikes!)
+            }
+        })
+        
+    }
+    
+    //Safer way to adjust likes but slower because getting firebase datafirst
+    func adjustLikes(addLike: Bool){
+        var likes:Int!
+        postRef.child("likes").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let like = snapshot.value as? Int{
+                if addLike{
+                    likes = like + 1
+                } else {
+                    likes = like - 1
+                }
+                self.likeLbl.text = "\(likes!)"
+                self.postRef.child("likes").setValue(likes!)
+            }
         })
     }
     
