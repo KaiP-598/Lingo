@@ -50,7 +50,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         imagePicker.dismiss(animated:true, completion: nil)
     }
     
-    func postToFirebase(imgUrl: String){
+    func postToFirebase(_ imgUrl: String){
         let timeInt = Int(Date().timeIntervalSince1970)
         let post: Dictionary<String, AnyObject> = [
             "caption": captionField.text! as AnyObject,
@@ -105,7 +105,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
         if let imgData = UIImageJPEGRepresentation(img, 0.2){
             
-            let imgUid = NSUUID().uuidString
+            let imgUid = UUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             
@@ -117,7 +117,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
                     print ("Log: Successfully uploaded image to Firebase storage")
                     let downloadURL = metaData?.downloadURL()?.absoluteString
                     if let url = downloadURL{
-                        self.postToFirebase(imgUrl: url)
+                        self.postToFirebase(url)
                     }
                     
                 }

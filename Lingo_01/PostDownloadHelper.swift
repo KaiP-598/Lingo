@@ -10,8 +10,8 @@ import Foundation
 import Firebase
 
 protocol SendPostToFeedVcDelegate{
-    func sendPost(post: Post)
-    func deletePost(postKey: String)
+    func sendPost(_ post: Post)
+    func deletePost(_ postKey: String)
 }
 class PostDownloader{
     
@@ -30,7 +30,7 @@ class PostDownloader{
                 if let postDict = snapshot.value as? Dictionary<String, Any>{
                     let key = snapshot.key
                     let post = Post(postKey: key, postData: postDict)
-                    self.delegate?.sendPost(post: post)
+                    self.delegate?.sendPost(post)
                 }
             })
         }
@@ -41,10 +41,10 @@ class PostDownloader{
         circleQuery.radius = radius
         var queryHandle = circleQuery.observe(.keyExited) { (postKey, location) in
             print ("postkey:\(postKey)")
-            self.delegate?.deletePost(postKey: postKey!)
+            self.delegate?.deletePost(postKey!)
         }
     }
-    static func getPostKeys(completionHandler: @escaping ([String])->()){
+    static func getPostKeys(_ completionHandler: @escaping ([String])->()){
         //TODO CIRCLE QUERY
         var postKeys = [String]()
         let postLocationRef = DataService.ds.REF_POSTS_LOC_DATE_KEY
@@ -61,7 +61,7 @@ class PostDownloader{
         
     }
     
-    static func getPost(postKeys:[String], completionHandler: @escaping ([Post])->()){
+    static func getPost(_ postKeys:[String], completionHandler: @escaping ([Post])->()){
         var posts = [Post]()
         let dispatchGroup = DispatchGroup()
         let arrayQueue = DispatchQueue(label: "arrayQueue")
@@ -86,7 +86,7 @@ class PostDownloader{
         
     }
     
-    private func getIndividualPost(postKey: String)-> Post{
+    fileprivate func getIndividualPost(_ postKey: String)-> Post{
         let postRef = DataService.ds.REF_POSTS.child(postKey)
         var post: Post!
         postRef.observeSingleEvent(of: .value, with: { (snapshot) in

@@ -20,15 +20,15 @@ class DataService{
     static let ds = DataService()
     
     //DB References
-    private var _REF_BASE = DB_BASE
-    private var _REF_POSTS = DB_BASE.child("posts")
-    private var _REF_POSTS_LOCATIONS = DB_BASE.child("posts_locations")
-    private var _REF_USERS = DB_BASE.child("users")
-    private var _REF_USERS_LOCATION = DB_BASE.child("users_locations")
+    fileprivate var _REF_BASE = DB_BASE
+    fileprivate var _REF_POSTS = DB_BASE.child("posts")
+    fileprivate var _REF_POSTS_LOCATIONS = DB_BASE.child("posts_locations")
+    fileprivate var _REF_USERS = DB_BASE.child("users")
+    fileprivate var _REF_USERS_LOCATION = DB_BASE.child("users_locations")
     
     //Storage references
-    private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
-    private var _REF_USER_PROFILE_IMAGES = STORAGE_BASE.child("user-profile-pics")
+    fileprivate var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    fileprivate var _REF_USER_PROFILE_IMAGES = STORAGE_BASE.child("user-profile-pics")
     
     var REF_BASE : FIRDatabaseReference {
         return _REF_BASE
@@ -51,7 +51,8 @@ class DataService{
     }
     
     var REF_USER_CURRENT: FIRDatabaseReference {
-        let uid = KeychainWrapper.stringForKey(KEY_UID)
+        //let uid = KeychainWrapper.stringForKey(KEY_UID)
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         let user = REF_USERS.child(uid!)
         return user
     }

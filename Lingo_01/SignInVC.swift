@@ -24,7 +24,7 @@ class SignInVC: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.stringForKey(KEY_UID){
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID){
             performSegue(withIdentifier: "goToTab", sender: nil)
         }
     }
@@ -62,7 +62,7 @@ class SignInVC: UIViewController {
                 print ("JESS: Successfully authenticated with Firebase")
                 if let user = user {
                     let userData = ["provider":credential.provider, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
-                    self.completeSignIn(id: user.uid, userData: userData)
+                    self.completeSignIn(user.uid, userData: userData)
                 }
             }
         })
@@ -75,7 +75,7 @@ class SignInVC: UIViewController {
                     print ("JESS: Email User authenticated with Firebase")
                     if let user = user {
                         let userData = ["provider":user.providerID]
-                        self.completeSignIn(id: user.uid, userData: userData)
+                        self.completeSignIn(user.uid, userData: userData)
                     }
                 } else{
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -85,7 +85,7 @@ class SignInVC: UIViewController {
                             print ("JESS: Successfully authenticated with Firebase")
                             if let user = user {
                                 let userData = ["provider":user.providerID, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
-                                self.completeSignIn(id: user.uid, userData: userData)
+                                self.completeSignIn(user.uid, userData: userData)
                             }
                         }
                     })
@@ -95,9 +95,9 @@ class SignInVC: UIViewController {
         
     }
     
-    func completeSignIn(id: String, userData: Dictionary<String, Any>){
+    func completeSignIn(_ id: String, userData: Dictionary<String, Any>){
         DataService.ds.createFirebaseUser(uid: id, userData: userData)
-        let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("JESS: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToTab", sender: nil)
     }

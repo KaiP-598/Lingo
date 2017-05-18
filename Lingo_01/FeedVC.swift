@@ -10,6 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 import CoreData
+import Kingfisher
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, SendPostToFeedVcDelegate{
     
@@ -17,7 +18,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var imageAdd: CircieView!
     @IBOutlet weak var captionField: FancyField!
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var testBtnLbl: UIButton!
     
     var posts = [Post]()
     var currentUser: FIRDatabaseReference!
@@ -28,6 +28,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var postDownloader = PostDownloader()
     var firstTimeForUserLocationSettup = false
     var loadedInitialPosts = false
+    var alert = Alert()
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
 
@@ -48,7 +49,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 //        }
         
         postDownloader.delegate = self
-        
         
         setupUserLocation()
 //        DataService.ds.REF_POSTS.observe(.value, with: {(snapshot) in
@@ -84,11 +84,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
-            if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString){
-                cell.configureCell(post: post, userLocation:currentUserLocation, img: img)
-            } else{
-                cell.configureCell(post: post, userLocation:currentUserLocation)
-            }
+           // if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString){
+//            if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString){
+//                cell.configureCell(post: post, userLocation:currentUserLocation, img: img)
+//            } else{
+//                cell.configureCell(post: post, userLocation:currentUserLocation)
+//            }
+            cell.configureCell(post: post, userLocation: currentUserLocation)
             return cell
 
         } else {
@@ -105,7 +107,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 1000.0
         locationManager.requestWhenInUseAuthorization()
-        self.testBtnLbl.backgroundColor = UIColor.red
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
         }
@@ -116,7 +117,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let userLocation: CLLocation = locations[locations.count - 1]
         
         currentUserLocation = userLocation
-        updateUserLocationToFirebase(userLocation: userLocation)
+        updateUserLocationToFirebase(userLocation)
         if (loadedInitialPosts){
             postDownloader.circleQuery.center = currentUserLocation
         } else{
@@ -124,8 +125,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                 print ("postAdded: \(currentUserLocation)")
                 posts = []
                 tableView.reloadData()
-                postDownloader.getNearbyPosts(center: currentUserLocation, radius: 5.5)
-                postDownloader.getExitedPosts(center: currentUserLocation, radius: 5.5)
+                postDownloader.getNearbyPosts(center: currentUserLocation, radius: 25.5)
+                postDownloader.getExitedPosts(center: currentUserLocation, radius: 25.5)
                 loadedInitialPosts = true
             //}
         }
@@ -154,9 +155,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         print ("Error \(error)")
     }
     
-    func updateUserLocationToFirebase(userLocation: CLLocation){
+    func updateUserLocationToFirebase(_ userLocation: CLLocation){
         
-        let uid = KeychainWrapper.stringForKey(KEY_UID)
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         geoFireUser.setLocation(userLocation, forKey: uid){ (error) in
             if (error != nil){
                 print ("Log: Error occured when updating user location to firebase")
@@ -167,7 +168,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
-    func sendPost(post: Post) {
+    func sendPost(_ post: Post) {
         
         print ("postAddedSendPost:\(posts)")
         tableView.beginUpdates()
@@ -177,15 +178,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         tableView.endUpdates()
     }
     
-    func deletePost(postKey: String){
+    func deletePost(_ postKey: String){
         for (index, post) in posts.enumerated(){
             if postKey == post.postKey{
-                deletePostAtRow(postIndex: index)
+                deletePostAtRow(index)
             }
         }
     }
     
-    func deletePostAtRow(postIndex: Int){
+    func deletePostAtRow(_ postIndex: Int){
         tableView.beginUpdates()
         posts.remove(at: postIndex)
         let indexPath: IndexPath = IndexPath(row: postIndex, section: 0)
@@ -201,7 +202,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
-        let keychainResult = KeychainWrapper.removeObjectForKey(KEY_UID)
+        let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "signOut", sender: nil)
         

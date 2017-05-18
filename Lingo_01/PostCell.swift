@@ -21,6 +21,9 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postImgHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var commentImg: UIImageView!
+    @IBOutlet weak var shareImg: UIImageView!
+    @IBOutlet weak var bookmarkImg: UIImageView!
     
     var post: Post!
     var likesRef: FIRDatabaseReference!
@@ -31,15 +34,32 @@ class PostCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        setupTapGestures()
+    }
+    
+    func setupTapGestures(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
         tap.numberOfTapsRequired = 1
         likeImg.addGestureRecognizer(tap)
         likeImg.isUserInteractionEnabled = true
         
+//        let tap2 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+//        tap2.numberOfTapsRequired = 1
+//        commentImg.addGestureRecognizer(tap)
+//        commentImg.isUserInteractionEnabled = true
+//        
+//        let tap3 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+//        tap3.numberOfTapsRequired = 1
+//        shareImg.addGestureRecognizer(tap)
+//        shareImg.isUserInteractionEnabled = true
+//        
+//        let tap4 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+//        tap4.numberOfTapsRequired = 1
+//        bookmarkImg.addGestureRecognizer(tap)
+//        bookmarkImg.isUserInteractionEnabled = true
+        
     }
-
-    func configureCell(post: Post, userLocation: CLLocation? = nil, img: UIImage? = nil) {
+    func configureCell(post: Post, userLocation: CLLocation? = nil) {
         self.post = post
         likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
         postRef = DataService.ds.REF_POSTS.child(self.post.postKey)
@@ -65,22 +85,23 @@ class PostCell: UITableViewCell {
             
             //GET IMAGE FROM FIREBASE
             userImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                
                 let profileImageUrl = snapshot.value as? String ?? ""
-                let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
-                ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                    if error != nil {
-                        print ("Log: Unable to download profile image")
-                    } else{
-                        print ("Log: Profile image downloaded successfully")
-                        if let imgData = data {
-                            if let userImage = UIImage(data: imgData){
-                                self.profileImg.image = userImage
-                                FeedVC.imageCache.setObject(userImage, forKey: profileImageUrl as NSString)
-                            }
-                        }
-                    }
-                })
+                let url = URL(string: "\(profileImageUrl)")!
+                self.profileImg.kf.setImage(with: url)
+//                let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
+//                ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+//                    if error != nil {
+//                        print ("Log: Unable to download profile image")
+//                    } else{
+//                        print ("Log: Profile image downloaded successfully")
+//                        if let imgData = data {
+//                            if let userImage = UIImage(data: imgData){
+//                                self.profileImg.image = userImage
+//                                FeedVC.imageCache.setObject(userImage, forKey: profileImageUrl as NSString)
+//                            }
+//                        }
+//                    }
+//                })
             })
             
         } else{
@@ -88,37 +109,38 @@ class PostCell: UITableViewCell {
             self.usernameLbl.text = "Anonymous"
         }
         
+        let url = URL(string: "\(post.imageUrl)")!
+        self.postImg.kf.setImage(with: url)
         
         
-        
-        if img != nil{
-            self.postImg.image = img
-//            if self.postImg.frame.size.width < (img?.size.width)!{
-//                self.postImgHeightConstraint.constant = self.postImg.frame.size.width / (img?.size.width)! * (img?.size.height)!
-//            }
-        } else{
-            
-            let ref = FIRStorage.storage().reference(forURL: post.imageUrl)
-            ref.data(withMaxSize: 2 * 1024 * 1024, completion:{(data, error) in
-                if error != nil {
-                    print ("JESS: Unable to download image from Firebase storage")
-                } else{
-                    print ("JESS: Image downloaded successful")
-                    if let imgData = data {
-                        if let img = UIImage(data: imgData){
-//                            if self.postImg.frame.size.height < (img.size.height){
-//                                self.postImgWidthConstraint.constant = self.postImg.frame.size.height / (img.size.height) * (img.size.width)
-//                            }
-                            self.postImg.image = img
-//                            if self.postImg.frame.size.width < (img.size.width){
-//                                self.postImgHeightConstraint.constant = self.postImg.frame.size.width / (img.size.width) * (img.size.height)
-//                            }
-                            FeedVC.imageCache.setObject(img, forKey: post.imageUrl as NSString)
-                        }
-                    }
-                }
-            })
-        }
+//        if img != nil{
+//            self.postImg.image = img
+////            if self.postImg.frame.size.width < (img?.size.width)!{
+////                self.postImgHeightConstraint.constant = self.postImg.frame.size.width / (img?.size.width)! * (img?.size.height)!
+////            }
+//        } else{
+//            
+//            let ref = FIRStorage.storage().reference(forURL: post.imageUrl)
+//            ref.data(withMaxSize: 2 * 1024 * 1024, completion:{(data, error) in
+//                if error != nil {
+//                    print ("JESS: Unable to download image from Firebase storage")
+//                } else{
+//                    print ("JESS: Image downloaded successful")
+//                    if let imgData = data {
+//                        if let img = UIImage(data: imgData){
+////                            if self.postImg.frame.size.height < (img.size.height){
+////                                self.postImgWidthConstraint.constant = self.postImg.frame.size.height / (img.size.height) * (img.size.width)
+////                            }
+//                            self.postImg.image = img
+////                            if self.postImg.frame.size.width < (img.size.width){
+////                                self.postImgHeightConstraint.constant = self.postImg.frame.size.width / (img.size.width) * (img.size.height)
+////                            }
+//                            FeedVC.imageCache.setObject(img, forKey: post.imageUrl as NSString)
+//                        }
+//                    }
+//                }
+//            })
+//        }
         
         if userLocation != nil {
             geoFirePost.getLocationForKey(post.postKey) { (location, error) in
@@ -148,15 +170,15 @@ class PostCell: UITableViewCell {
         })
     }
     
-    func likeTapped(sender: UITapGestureRecognizer){
+    func likeTapped(_ sender: UITapGestureRecognizer){
         likesRef.observeSingleEvent(of: .value, with: {(snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.likeImg.image = UIImage(named: "Hearts_Filled")
-                self.adjustLike(addLike: true)
+                self.adjustLike(true)
                 self.likesRef.setValue(true)
             } else {
                 self.likeImg.image = UIImage(named: "Hearts_Empty")
-                self.adjustLike(addLike: false)
+                self.adjustLike(false)
                 self.likesRef.removeValue()
             }
             
@@ -164,7 +186,7 @@ class PostCell: UITableViewCell {
     }
     
     //quicker UI response but not effective
-    func adjustLike(addLike: Bool){
+    func adjustLike(_ addLike: Bool){
         var likes = Int(self.likeLbl.text!)
         if addLike{
             likes = likes! + 1
@@ -187,7 +209,7 @@ class PostCell: UITableViewCell {
     }
     
     //Safer way to adjust likes but slower because getting firebase datafirst
-    func adjustLikes(addLike: Bool){
+    func adjustLikes(_ addLike: Bool){
         var likes:Int!
         postRef.child("likes").observeSingleEvent(of: .value, with: { (snapshot) in
             if let like = snapshot.value as? Int{

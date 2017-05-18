@@ -74,7 +74,7 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         }
         
         if let imgData = UIImageJPEGRepresentation(img, 0.2){
-            let imgUid = NSUUID().uuidString
+            let imgUid = UUID().uuidString
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             
@@ -89,7 +89,7 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 print ("Log: Successfully uploaded image to Firebase storage")
                 let downloadURL = metaData?.downloadURL()?.absoluteString
                 if let url = downloadURL{
-                    self.postToFirebase(imgUrl: url)
+                    self.postToFirebase(url)
                 }
             }
             
@@ -98,7 +98,7 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
 }
     
-    func postToFirebase(imgUrl: String){
+    func postToFirebase(_ imgUrl: String){
         profileImageRef.setValue(imgUrl)
         print ("Log: Profile Image successfully updated")
         
@@ -106,7 +106,7 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
 
     @IBAction func logOutBtnTapped(_ sender: Any) {
-        let keychainResult = KeychainWrapper.removeObjectForKey(KEY_UID)
+        let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         try! FIRAuth.auth()?.signOut()
         print (keychainResult)
         self.dismiss(animated: true, completion: nil)

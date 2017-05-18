@@ -13,7 +13,7 @@ class PostLocationDateKey{
     
     static let manager = PostLocationDateKey()
     
-    private var _dateKeys = [String]()
+    fileprivate var _dateKeys = [String]()
     
     var dateKeys: [String] {
         return _dateKeys
