@@ -12,7 +12,7 @@ import Firebase
 import CoreData
 import Kingfisher
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, SendPostToFeedVcDelegate{
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, SendPostToFeedVcDelegate, ShowAlertcontroller{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircieView!
@@ -20,6 +20,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var distanceLabel: UILabel!
     
     var posts = [Post]()
+    var blocklist = [String]()
     var currentUser: FIRDatabaseReference!
     var locationManager: CLLocationManager!
     var geoFireUser: GeoFire!
@@ -51,6 +52,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         postDownloader.delegate = self
         
         setupUserLocation()
+        setupBlocklist()
 //        DataService.ds.REF_POSTS.observe(.value, with: {(snapshot) in
 //            
 //            self.posts = []
@@ -90,6 +92,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 //            } else{
 //                cell.configureCell(post: post, userLocation:currentUserLocation)
 //            }
+            cell.delegate = self
             cell.configureCell(post: post, userLocation: currentUserLocation)
             return cell
 
@@ -169,13 +172,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     func sendPost(_ post: Post) {
-        
         print ("postAddedSendPost:\(posts)")
-        tableView.beginUpdates()
-        posts.insert(post, at: 0)
-        let indexPath: IndexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
+        if (!self.blocklist.contains("\(post.authorID!)")){
+            tableView.beginUpdates()
+            posts.insert(post, at: 0)
+            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+        print ("paomian: \(self.posts.count)")
     }
     
     func deletePost(_ postKey: String){
@@ -192,6 +197,45 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let indexPath: IndexPath = IndexPath(row: postIndex, section: 0)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
+    }
+    
+    func setupBlocklist(){
+        DataService.ds.REF_USER_CURRENT.child("blocklist").observe(.value, with: {(snapshot) in
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot]{
+                for snap in snapshot {
+                    self.blocklist.append(snap.key)
+                }
+            }
+        })
+    }
+    
+    func showActionsheet(postKey: String, userID: String) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print(self.blocklist)
+        }
+        actionSheet.addAction(cancelAction)
+        let blockAction = UIAlertAction(title: "Block User", style: .default) { action in
+            let report: Dictionary<String, AnyObject> = [
+                "\(userID)": "true" as AnyObject
+            ]
+            let blockList = DataService.ds.REF_USER_CURRENT.child("blocklist")
+            blockList.setValue(report)
+            self.deletePost(postKey)
+
+        }
+        actionSheet.addAction(blockAction)
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { action in
+            let report: Dictionary<String, AnyObject> = [
+                "postKey": postKey as AnyObject,
+                "userID": userID as AnyObject
+            ]
+            
+            let firebasePost = DataService.ds.REF_REPORT.childByAutoId()
+            firebasePost.setValue(report)
+        }
+        actionSheet.addAction(reportAction)
+        present(actionSheet, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
