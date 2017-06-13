@@ -32,6 +32,9 @@
 		4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */; };
 		4D8B43361E7686950051262C /* UserNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43351E7686950051262C /* UserNameCell.swift */; };
 		4D8EEFB91EB35F6C008BA565 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */; };
+		4DA0F2701ED7F3BC00015185 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F26F1ED7F3BC00015185 /* ReportVC.swift */; };
+		4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F2711ED819EF00015185 /* TermsVC.swift */; };
+		4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */; };
 		4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */; };
 		4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */; };
 		4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DC1E7FFAA100FFC5E5 /* GFGeoHash.m */; };
@@ -75,6 +78,9 @@
 		4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountDetailVC.swift; sourceTree = "<group>"; };
 		4D8B43351E7686950051262C /* UserNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameCell.swift; sourceTree = "<group>"; };
 		4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		4DA0F26F1ED7F3BC00015185 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
+		4DA0F2711ED819EF00015185 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsConstant.swift; sourceTree = "<group>"; };
 		4DE099D11E7FFAA100FFC5E5 /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
 		4DE099D21E7FFAA100FFC5E5 /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
 		4DE099D31E7FFAA100FFC5E5 /* GFQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFQuery.h; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 				4D8B432D1E764A7B0051262C /* UserProfile */,
 				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
 				4D71B9FB1E5F097800511559 /* FeedVC.swift */,
+				4DA0F2711ED819EF00015185 /* TermsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +202,7 @@
 			children = (
 				4D2E459E1E4EEAA30048E2DD /* Constants.swift */,
 				4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */,
+				4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 				4D8B432B1E73DA040051262C /* UserProfileVC.swift */,
 				4D8B432E1E764A950051262C /* UserNameVC.swift */,
 				4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */,
+				4DA0F26F1ED7F3BC00015185 /* ReportVC.swift */,
 			);
 			name = UserProfile;
 			sourceTree = "<group>";
@@ -441,6 +450,7 @@
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
 				4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
+				4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */,
 				4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */,
 				4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */,
 				4D71BA051E613C2300511559 /* Post.swift in Sources */,
@@ -451,9 +461,11 @@
 				4DE099EC1E84017D00FFC5E5 /* TabBarHeightView.swift in Sources */,
 				4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */,
 				4D71BA031E60566500511559 /* DataService.swift in Sources */,
+				4DA0F2701ED7F3BC00015185 /* ReportVC.swift in Sources */,
 				4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */,
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
+				4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */,
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
 				4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */,
 				4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */,
@@ -563,8 +575,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kaipeng Wu (HBQHQ7GYJ6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kaipeng Wu (HBQHQ7GYJ6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -594,7 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lingo_01/Lingo_01.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kaipeng Wu (HBQHQ7GYJ6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kaipeng Wu (HBQHQ7GYJ6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AVS9V87PV7;
 				INFOPLIST_FILE = Lingo_01/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -614,7 +626,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lingo_01/Lingo_01.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kaipeng Wu (HBQHQ7GYJ6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AVS9V87PV7;
 				INFOPLIST_FILE = Lingo_01/Info.plist;

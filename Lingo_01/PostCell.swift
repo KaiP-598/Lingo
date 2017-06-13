@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol ShowAlertcontroller:class {
+    func showActionsheet(postKey: String, userID: String)
+}
+
 class PostCell: UITableViewCell {
     
     
@@ -31,10 +35,14 @@ class PostCell: UITableViewCell {
     var userImageRef: FIRDatabaseReference!
     var postRef: FIRDatabaseReference!
     var geoFirePost: GeoFire!
+    var actionSheet: UIAlertController!
+    weak var delegate: ShowAlertcontroller? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupTapGestures()
+        
+        //setupActionSheet()
     }
     
     func setupTapGestures(){
@@ -53,10 +61,10 @@ class PostCell: UITableViewCell {
 //        shareImg.addGestureRecognizer(tap)
 //        shareImg.isUserInteractionEnabled = true
 //        
-//        let tap4 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
-//        tap4.numberOfTapsRequired = 1
-//        bookmarkImg.addGestureRecognizer(tap)
-//        bookmarkImg.isUserInteractionEnabled = true
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(presentAlertcontroller))
+        tap4.numberOfTapsRequired = 1
+        bookmarkImg.addGestureRecognizer(tap4)
+        bookmarkImg.isUserInteractionEnabled = true
         
     }
     func configureCell(post: Post, userLocation: CLLocation? = nil) {
@@ -70,6 +78,8 @@ class PostCell: UITableViewCell {
         self.likeLbl.text = "\(post.likes)"
         self.caption.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.timeLbl.text = timeStampHelper.timeManager.getTime(timeStamp: Int(post.timeStamp!)!)
+        self.commentImg.isHidden = true
+        self.shareImg.isHidden = true
         
         
         if (post.authorID != nil) {
@@ -184,6 +194,11 @@ class PostCell: UITableViewCell {
             
         })
     }
+    
+    func presentAlertcontroller(){
+        delegate?.showActionsheet(postKey: self.post.postKey, userID: self.post.authorID!)
+    }
+    
     
     //quicker UI response but not effective
     func adjustLike(_ addLike: Bool){
