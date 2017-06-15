@@ -238,10 +238,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         present(actionSheet, animated: true, completion: nil)
     }
     
+    func presentCommentVC(postKey: String) {
+        performSegue(withIdentifier: "commentVC", sender: postKey)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toAddPostVC"){
             let addPostVC = segue.destination as! AddPostVC
             addPostVC.currentUserLocation = currentUserLocation
+        } else if(segue.identifier == "commentVC"){
+            if let postKey = sender as! String?{
+                let commentVC = segue.destination as! CommentVC
+                commentVC.postKey = postKey
+            }
         }
     }
     
