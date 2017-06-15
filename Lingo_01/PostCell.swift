@@ -11,6 +11,7 @@ import Firebase
 
 protocol ShowAlertcontroller:class {
     func showActionsheet(postKey: String, userID: String)
+    func presentCommentVC(postKey: String)
 }
 
 class PostCell: UITableViewCell {
@@ -51,11 +52,11 @@ class PostCell: UITableViewCell {
         likeImg.addGestureRecognizer(tap)
         likeImg.isUserInteractionEnabled = true
         
-//        let tap2 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
-//        tap2.numberOfTapsRequired = 1
-//        commentImg.addGestureRecognizer(tap)
-//        commentImg.isUserInteractionEnabled = true
-//        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(presentCommentVC))
+        tap2.numberOfTapsRequired = 1
+        commentImg.addGestureRecognizer(tap2)
+        commentImg.isUserInteractionEnabled = true
+        
 //        let tap3 = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
 //        tap3.numberOfTapsRequired = 1
 //        shareImg.addGestureRecognizer(tap)
@@ -78,7 +79,7 @@ class PostCell: UITableViewCell {
         self.likeLbl.text = "\(post.likes)"
         self.caption.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.timeLbl.text = timeStampHelper.timeManager.getTime(timeStamp: Int(post.timeStamp!)!)
-        self.commentImg.isHidden = true
+        //self.commentImg.isHidden = true
         self.shareImg.isHidden = true
         
         
@@ -199,6 +200,9 @@ class PostCell: UITableViewCell {
         delegate?.showActionsheet(postKey: self.post.postKey, userID: self.post.authorID!)
     }
     
+    func presentCommentVC(){
+        delegate?.presentCommentVC(postKey: self.post.postKey)
+    }
     
     //quicker UI response but not effective
     func adjustLike(_ addLike: Bool){

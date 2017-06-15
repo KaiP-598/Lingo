@@ -26,6 +26,7 @@ class DataService{
     fileprivate var _REF_USERS = DB_BASE.child("users")
     fileprivate var _REF_USERS_LOCATION = DB_BASE.child("users_locations")
     fileprivate var _REF_REPORTS = DB_BASE.child("reports")
+    fileprivate var _REF_COMMENTS = DB_BASE.child("comments")
     
     //Storage references
     fileprivate var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
@@ -72,6 +73,10 @@ class DataService{
     
     var REF_REPORT : FIRDatabaseReference{
         return _REF_REPORTS
+    }
+    
+    var REF_COMMENT: FIRDatabaseReference{
+        return _REF_COMMENTS
     }
     
     

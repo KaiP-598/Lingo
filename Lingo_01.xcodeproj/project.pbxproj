@@ -27,6 +27,8 @@
 		4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */; };
 		4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */; };
 		4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */; };
+		4D8B36321EF011AD0040263F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B36311EF011AD0040263F /* Comment.swift */; };
+		4D8B36341EF2B3A70040263F /* stringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B36331EF2B3A70040263F /* stringHelper.swift */; };
 		4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432B1E73DA040051262C /* UserProfileVC.swift */; };
 		4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B432E1E764A950051262C /* UserNameVC.swift */; };
 		4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */; };
@@ -34,6 +36,8 @@
 		4D8EEFB91EB35F6C008BA565 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */; };
 		4DA0F2701ED7F3BC00015185 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F26F1ED7F3BC00015185 /* ReportVC.swift */; };
 		4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F2711ED819EF00015185 /* TermsVC.swift */; };
+		4DA95B9F1EEFDEF300A8C4C8 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */; };
+		4DA95BA21EEFE48500A8C4C8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */; };
 		4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */; };
 		4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */; };
 		4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */; };
@@ -73,6 +77,8 @@
 		4D7C8B0E1EA2442500D85B13 /* blackburnLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = blackburnLocation.gpx; sourceTree = "<group>"; };
 		4D7C8B0F1EA2488600D85B13 /* middleBoroughLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = middleBoroughLocation.gpx; sourceTree = "<group>"; };
 		4D7C8B101EA5065300D85B13 /* claytonSouthLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = claytonSouthLocation.gpx; sourceTree = "<group>"; };
+		4D8B36311EF011AD0040263F /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		4D8B36331EF2B3A70040263F /* stringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stringHelper.swift; sourceTree = "<group>"; };
 		4D8B432B1E73DA040051262C /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		4D8B432E1E764A950051262C /* UserNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameVC.swift; sourceTree = "<group>"; };
 		4D8B43301E76845C0051262C /* UserAccountDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountDetailVC.swift; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 		4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		4DA0F26F1ED7F3BC00015185 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		4DA0F2711ED819EF00015185 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsConstant.swift; sourceTree = "<group>"; };
 		4DE099D11E7FFAA100FFC5E5 /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
 		4DE099D21E7FFAA100FFC5E5 /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
@@ -166,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				4D71BA041E613C2300511559 /* Post.swift */,
+				4D8B36311EF011AD0040263F /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -173,6 +182,7 @@
 		4D2E459A1E4ED2400048E2DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4DA95BA01EEFE45000A8C4C8 /* CommentSection */,
 				4DE099EA1E84015400FFC5E5 /* TabBarView */,
 				4D8B43321E76854B0051262C /* UserProfileViews */,
 				4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */,
@@ -188,6 +198,7 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4DA95B9D1EEFDEDA00A8C4C8 /* Comment */,
 				4DE099E71E80BE6000FFC5E5 /* AddPost */,
 				4D8B432D1E764A7B0051262C /* UserProfile */,
 				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
@@ -203,6 +214,7 @@
 				4D2E459E1E4EEAA30048E2DD /* Constants.swift */,
 				4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */,
 				4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */,
+				4D8B36331EF2B3A70040263F /* stringHelper.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -242,6 +254,22 @@
 				4D8B43351E7686950051262C /* UserNameCell.swift */,
 			);
 			name = UserProfileViews;
+			sourceTree = "<group>";
+		};
+		4DA95B9D1EEFDEDA00A8C4C8 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
+		4DA95BA01EEFE45000A8C4C8 /* CommentSection */ = {
+			isa = PBXGroup;
+			children = (
+				4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */,
+			);
+			name = CommentSection;
 			sourceTree = "<group>";
 		};
 		4DE099CF1E7FFAA100FFC5E5 /* GeoFire */ = {
@@ -447,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */,
+				4DA95B9F1EEFDEF300A8C4C8 /* CommentVC.swift in Sources */,
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
 				4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
@@ -476,6 +505,9 @@
 				4D8EEFB91EB35F6C008BA565 /* AlertHelper.swift in Sources */,
 				4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */,
 				4D71BA001E603C0200511559 /* PostCell.swift in Sources */,
+				4D8B36321EF011AD0040263F /* Comment.swift in Sources */,
+				4D8B36341EF2B3A70040263F /* stringHelper.swift in Sources */,
+				4DA95BA21EEFE48500A8C4C8 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
