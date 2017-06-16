@@ -13,5 +13,6 @@ target 'Lingo_01' do
   pod 'FBSDKLoginKit'
   pod 'SwiftKeychainWrapper'
   pod 'Kingfisher', '~> 3.0'
+  pod 'SwipeCellKit'
 
 end
