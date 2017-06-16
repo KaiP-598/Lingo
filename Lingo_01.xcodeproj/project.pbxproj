@@ -46,6 +46,7 @@
 		4DE099E51E7FFAA100FFC5E5 /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099E01E7FFAA100FFC5E5 /* GFQuery.m */; };
 		4DE099E91E80BE8300FFC5E5 /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */; };
 		4DE099EC1E84017D00FFC5E5 /* TabBarHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099EB1E84017D00FFC5E5 /* TabBarHeightView.swift */; };
+		4DE449DF1EF3A1AA0061AF03 /* colourHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE449DE1EF3A1AA0061AF03 /* colourHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		4DE099E81E80BE8300FFC5E5 /* AddPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
 		4DE099EB1E84017D00FFC5E5 /* TabBarHeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarHeightView.swift; sourceTree = "<group>"; };
 		4DE099ED1E863BC500FFC5E5 /* claytonLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = claytonLocation.gpx; sourceTree = "<group>"; };
+		4DE449DE1EF3A1AA0061AF03 /* colourHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colourHelper.swift; sourceTree = "<group>"; };
 		C6F6751C38981D99F69F90FB /* Pods_Lingo_01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingo_01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EA3871F77703DE03B736CE /* Pods-Lingo_01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingo_01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingo_01/Pods-Lingo_01.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +217,7 @@
 				4D8EEFB81EB35F6C008BA565 /* AlertHelper.swift */,
 				4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */,
 				4D8B36331EF2B3A70040263F /* stringHelper.swift */,
+				4DE449DE1EF3A1AA0061AF03 /* colourHelper.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */,
 				4D8B43361E7686950051262C /* UserNameCell.swift in Sources */,
 				4D8EEFB91EB35F6C008BA565 /* AlertHelper.swift in Sources */,
+				4DE449DF1EF3A1AA0061AF03 /* colourHelper.swift in Sources */,
 				4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */,
 				4D71BA001E603C0200511559 /* PostCell.swift in Sources */,
 				4D8B36321EF011AD0040263F /* Comment.swift in Sources */,

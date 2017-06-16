@@ -457,7 +457,7 @@
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miq-xF-I4R">
                                                     <rect key="frame" x="51" y="53" width="324" height="1"/>
-                                                    <color key="backgroundColor" red="0.75374762055837563" green="0.75374762055837563" blue="0.75374762055837563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="K7h-sh-zyH"/>
                                                     </constraints>
@@ -767,7 +767,7 @@
                             <constraint firstItem="eqs-jN-67G" firstAttribute="top" secondItem="Qrh-ht-BLH" secondAttribute="bottom" id="vSF-iQ-6lL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="1A621DC9-DFF0-46F4-8E9B-E87FA5FF1FD8" selectedImage="1A621DC9-DFF0-46F4-8E9B-E87FA5FF1FD8" id="jll-ZF-RiH">
+                    <tabBarItem key="tabBarItem" title="" image="D9CCF9EF-E05C-4C74-93F0-3CC012B05D4F" selectedImage="D9CCF9EF-E05C-4C74-93F0-3CC012B05D4F" id="jll-ZF-RiH">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Profile" id="79c-qi-ESs">
@@ -800,7 +800,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Seu-JO-nUM" id="Rlq-4H-ec2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk9-OB-9Ps">
@@ -831,7 +831,7 @@
                                         <rect key="frame" x="0.0" y="115" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80L-tL-wgH" id="gwq-C2-2Qu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EL-cf-fkF">
@@ -1092,7 +1092,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1A621DC9-DFF0-46F4-8E9B-E87FA5FF1FD8" width="22" height="20">
+        <image name="Comment_Empty" width="50" height="50"/>
+        <image name="D9CCF9EF-E05C-4C74-93F0-3CC012B05D4F" width="22" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1172,7 +1173,6 @@ AKcAqQCrAK0AsgC1ALcAuQC7AL0AwgDZANsA3RBfEGQQbxB4EIsQjxCaEKMQqBCwELMQuBDHEMsQ0hDa
 EOcQ7BDuEPAQ9RD9EQARBRENERARIhElESoAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAARLA
 </mutableData>
         </image>
-        <image name="Comment_Empty" width="50" height="50"/>
         <image name="Home_Empty" width="25" height="25"/>
         <image name="Home_Filled" width="25" height="25"/>
         <image name="Like_Empty" width="50" height="50"/>

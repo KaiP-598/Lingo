@@ -23,6 +23,7 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     var profileImgUrl: String?
     var userName: String?
     var comments = [Comment]()
+    var blocklist = [String:String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,14 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         commentRef = DataService.ds.REF_COMMENT.child("\(postKey!)")
         uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         
+        
+        
         //push view when keyboard is shown
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
         hideKeyboard()
+        setupBlocklist()
         obtainProfile()
         obtainComments()
 
@@ -68,12 +72,78 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let comment = comments[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as? CommentCell{
+            
             cell.configureCell(comment: comment)
+            
             return cell
             
         } else{
             return CommentCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let report = UITableViewRowAction(style: .normal, title: "Report") { action, index in
+            let comment = self.comments[index.row]
+            self.showActionsheet(commentKey: comment.commentID, userID: comment.userID, indexPath: indexPath)
+        }
+        //let backImage = UIImageView(image: UIImage(named: "profile"))
+       // backImage.contentMode = .scaleAspectFill
+        //report.backgroundColor = UIColor(patternImage: backImage.image!)
+        report.backgroundColor = UIColor(rgb: 0xC0C0C0)
+
+        
+        return [report]
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func deleteCommentAtRow(_ commentIndexPath: IndexPath){
+        tableView.beginUpdates()
+        comments.remove(at: commentIndexPath.row)
+        tableView.deleteRows(at: [commentIndexPath], with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    func showActionsheet(commentKey: String, userID: String, indexPath: IndexPath) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            
+        }
+        actionSheet.addAction(cancelAction)
+        let blockAction = UIAlertAction(title: "Block User", style: .default) { action in
+            let report: Dictionary<String, AnyObject> = [
+                "\(userID)": "true" as AnyObject
+            ]
+            let blockList = DataService.ds.REF_USER_CURRENT.child("blocklist")
+            blockList.setValue(report)
+            self.deleteCommentAtRow(indexPath)
+            
+        }
+        actionSheet.addAction(blockAction)
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { action in
+            let report: Dictionary<String, AnyObject> = [
+                "postKey": commentKey as AnyObject,
+                "userID": userID as AnyObject
+            ]
+            
+            let firebasePost = DataService.ds.REF_REPORT.childByAutoId()
+            firebasePost.setValue(report)
+        }
+        actionSheet.addAction(reportAction)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func setupBlocklist(){
+        DataService.ds.REF_USER_CURRENT.child("blocklist").observe(.value, with: {(snapshot) in
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot]{
+                for snap in snapshot {
+                    self.blocklist[snap.key] = "true"
+                }
+            }
+        })
     }
     
     func obtainProfile(){
@@ -99,7 +169,9 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                     if let commentDict = snap.value as? Dictionary<String, Any>{
                         let key = snap.key
                         let comment = Comment(commentID: key, commentData: commentDict)
-                        self.comments.append(comment)
+                        if self.blocklist[comment.userID] == nil{
+                            self.comments.append(comment)
+                        }
                     }
                 }
             }
