@@ -27,6 +27,8 @@ class DataService{
     fileprivate var _REF_USERS_LOCATION = DB_BASE.child("users_locations")
     fileprivate var _REF_REPORTS = DB_BASE.child("reports")
     fileprivate var _REF_COMMENTS = DB_BASE.child("comments")
+    fileprivate var _REF_CHATROOMS = DB_BASE.child("chatrooms")
+    fileprivate var _REF_CHATROOMS_LOCATION = DB_BASE.child("chatrooms_locations")
     
     //Storage references
     fileprivate var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
@@ -77,6 +79,18 @@ class DataService{
     
     var REF_COMMENT: FIRDatabaseReference{
         return _REF_COMMENTS
+    }
+    
+    var REF_CHATROOMS: FIRDatabaseReference{
+        return _REF_CHATROOMS
+    }
+    
+    var REF_CHATROOMS_LOCATION: FIRDatabaseReference{
+        return _REF_CHATROOMS_LOCATION
+    }
+    
+    var REF_CHATROOMS_LOC_DATE_KEY: FIRDatabaseReference {
+        return _REF_CHATROOMS_LOCATION.child("\(PostLocationDateKey.manager.getCurrentDateKey())")
     }
     
     

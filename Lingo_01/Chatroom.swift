@@ -29,4 +29,15 @@ class Chatroom {
 
     }
     
+    init(chatroomKey: String, chatroomData: Dictionary<String,Any>){
+        self._chatroomID = chatroomKey
+        
+        if let chatroomName = chatroomData["chatroomName"] as? String{
+            self._chatroomName = chatroomName
+        }
+
+    }
+    
+    
+    
 }

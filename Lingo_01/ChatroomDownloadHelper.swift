@@ -16,32 +16,32 @@ protocol SendChannelToChatroomVcDelegate{
 class ChatroomDownloader{
     
     let postLocKey = PostLocationDateKey.manager.getCurrentDateKey()
-    var circleQuery = GeoFire(firebaseRef: DataService.ds.REF_POSTS_LOC_DATE_KEY).query(at:nil, withRadius:5)!
-    var delegate: SendPostToFeedVcDelegate?
+    var circleQuery = GeoFire(firebaseRef: DataService.ds.REF_CHATROOMS_LOC_DATE_KEY).query(at:nil, withRadius:25)!
+    var delegate: SendChannelToChatroomVcDelegate?
     
     
-    func getNearbyPosts(center: CLLocation, radius: Double){
+    func getNearbyChatrooms(center: CLLocation, radius: Double){
         circleQuery.center = center
         circleQuery.radius = radius
-        var queryHandle = circleQuery.observe(.keyEntered) { (postKey, location) in
-            print ("postAdded:\(postKey)")
-            let postRef = DataService.ds.REF_POSTS.child(postKey!)
-            postRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                if let postDict = snapshot.value as? Dictionary<String, Any>{
+        var queryHandle = circleQuery.observe(.keyEntered) { (chatroomKey, location) in
+            print ("chatroomAdded:\(chatroomKey)")
+            let chatroomRef = DataService.ds.REF_CHATROOMS.child(chatroomKey!)
+            chatroomRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let chatroomDict = snapshot.value as? Dictionary<String, Any>{
                     let key = snapshot.key
-                    let post = Post(postKey: key, postData: postDict)
-                    self.delegate?.sendPost(post)
+                    let chatroom = Chatroom(chatroomKey: key, chatroomData: chatroomDict)
+                    self.delegate?.sendChatroom(chatroom)
                 }
             })
         }
     }
     
-    func getExitedPosts(center: CLLocation, radius: Double){
+    func getExitedChatrooms(center: CLLocation, radius: Double){
         circleQuery.center = center
         circleQuery.radius = radius
-        var queryHandle = circleQuery.observe(.keyExited) { (postKey, location) in
-            print ("postkey:\(postKey)")
-            self.delegate?.deletePost(postKey!)
+        var queryHandle = circleQuery.observe(.keyExited) { (chatroomKey, location) in
+            print ("exitedChatroomKey:\(chatroomKey)")
+            self.delegate?.deleteChatroom(chatroomKey!)
         }
     }
 }
