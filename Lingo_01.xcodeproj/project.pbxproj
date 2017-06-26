@@ -14,6 +14,10 @@
 		4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */; };
 		4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */; };
 		4D00DD2A1E4ECF7D006BC916 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */; };
+		4D1E9E971EF3D71600466B98 /* Chatrooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E9E951EF3D71600466B98 /* Chatrooms.storyboard */; };
+		4D1E9E9A1EF3E40E00466B98 /* ChatroomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */; };
+		4D1E9E9D1EF3E4F200466B98 /* ChatroomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */; };
+		4D1E9E9F1EF3E50800466B98 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E9E1EF3E50800466B98 /* Chatroom.swift */; };
 		4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E459C1E4EE74F0048E2DD /* FancyView.swift */; };
 		4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E459E1E4EEAA30048E2DD /* Constants.swift */; };
 		4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */; };
@@ -24,6 +28,7 @@
 		4D71BA001E603C0200511559 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FF1E603C0200511559 /* PostCell.swift */; };
 		4D71BA031E60566500511559 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA021E60566500511559 /* DataService.swift */; };
 		4D71BA051E613C2300511559 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA041E613C2300511559 /* Post.swift */; };
+		4D7BE1A31EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */; };
 		4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */; };
 		4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */; };
 		4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */; };
@@ -59,6 +64,10 @@
 		4D00DD211E4ECF11006BC916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D00DD231E4ECF11006BC916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D1E9E961EF3D71600466B98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chatrooms.storyboard; sourceTree = "<group>"; };
+		4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomVC.swift; sourceTree = "<group>"; };
+		4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomCell.swift; sourceTree = "<group>"; };
+		4D1E9E9E1EF3E50800466B98 /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		4D2E459C1E4EE74F0048E2DD /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		4D2E459E1E4EEAA30048E2DD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = ../RoundBtn.swift; sourceTree = "<group>"; };
@@ -70,6 +79,7 @@
 		4D71B9FF1E603C0200511559 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		4D71BA021E60566500511559 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4D71BA041E613C2300511559 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomDownloadHelper.swift; sourceTree = "<group>"; };
 		4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocationKey.swift; sourceTree = "<group>"; };
 		4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDownloadHelper.swift; sourceTree = "<group>"; };
 		4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeStampHelper.swift; sourceTree = "<group>"; };
@@ -157,6 +167,7 @@
 				4D2E45991E4ED2370048E2DD /* Model */,
 				4D00DD171E4ECF11006BC916 /* AppDelegate.swift */,
 				4D00DD1B1E4ECF11006BC916 /* Main.storyboard */,
+				4D1E9E951EF3D71600466B98 /* Chatrooms.storyboard */,
 				4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */,
 				4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */,
 				4D7C8B101EA5065300D85B13 /* claytonSouthLocation.gpx */,
@@ -172,11 +183,28 @@
 			path = Lingo_01;
 			sourceTree = "<group>";
 		};
+		4D1E9E981EF3E13400466B98 /* Chatroom */ = {
+			isa = PBXGroup;
+			children = (
+				4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */,
+			);
+			name = Chatroom;
+			sourceTree = "<group>";
+		};
+		4D1E9E9B1EF3E4D400466B98 /* Chatroom */ = {
+			isa = PBXGroup;
+			children = (
+				4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */,
+			);
+			name = Chatroom;
+			sourceTree = "<group>";
+		};
 		4D2E45991E4ED2370048E2DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4D71BA041E613C2300511559 /* Post.swift */,
 				4D8B36311EF011AD0040263F /* Comment.swift */,
+				4D1E9E9E1EF3E50800466B98 /* Chatroom.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -184,6 +212,7 @@
 		4D2E459A1E4ED2400048E2DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D1E9E9B1EF3E4D400466B98 /* Chatroom */,
 				4DA95BA01EEFE45000A8C4C8 /* CommentSection */,
 				4DE099EA1E84015400FFC5E5 /* TabBarView */,
 				4D8B43321E76854B0051262C /* UserProfileViews */,
@@ -200,6 +229,7 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4D1E9E981EF3E13400466B98 /* Chatroom */,
 				4DA95B9D1EEFDEDA00A8C4C8 /* Comment */,
 				4DE099E71E80BE6000FFC5E5 /* AddPost */,
 				4D8B432D1E764A7B0051262C /* UserProfile */,
@@ -236,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */,
+				4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */,
 			);
 			name = FirebaseDownloadHelper;
 			sourceTree = "<group>";
@@ -419,6 +450,7 @@
 				4D00DD2A1E4ECF7D006BC916 /* GoogleService-Info.plist in Resources */,
 				4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */,
 				4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */,
+				4D1E9E971EF3D71600466B98 /* Chatrooms.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +517,8 @@
 				4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */,
 				4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */,
 				4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */,
+				4D1E9E9F1EF3E50800466B98 /* Chatroom.swift in Sources */,
+				4D1E9E9D1EF3E4F200466B98 /* ChatroomCell.swift in Sources */,
 				4D71BA051E613C2300511559 /* Post.swift in Sources */,
 				4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */,
 				4DE099E91E80BE8300FFC5E5 /* AddPostVC.swift in Sources */,
@@ -494,6 +528,7 @@
 				4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */,
 				4D71BA031E60566500511559 /* DataService.swift in Sources */,
 				4DA0F2701ED7F3BC00015185 /* ReportVC.swift in Sources */,
+				4D7BE1A31EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift in Sources */,
 				4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */,
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
@@ -502,6 +537,7 @@
 				4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */,
 				4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */,
 				4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */,
+				4D1E9E9A1EF3E40E00466B98 /* ChatroomVC.swift in Sources */,
 				4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */,
 				4D8B432C1E73DA040051262C /* UserProfileVC.swift in Sources */,
 				4D8B43361E7686950051262C /* UserNameCell.swift in Sources */,
@@ -532,6 +568,14 @@
 				4D00DD211E4ECF11006BC916 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4D1E9E951EF3D71600466B98 /* Chatrooms.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D1E9E961EF3D71600466B98 /* Base */,
+			);
+			name = Chatrooms.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

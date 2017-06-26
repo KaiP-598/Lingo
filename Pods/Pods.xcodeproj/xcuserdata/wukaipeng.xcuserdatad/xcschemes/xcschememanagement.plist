@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,11 +72,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DB298557F956493D2002F1A1811A518</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
@@ -82,17 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>97A9485FFF5305065D3723F79E964813</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A35B205E8AFBA647A2B83A159B3C0D6C</key>
+		<key>CD2B1D9083DBF9093D4B0473E30D568F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CED155647045533B6AEA5F606B1F51EC</key>
+		<key>F3AD065E1F4A9BBD133103EC64B967BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8CE1C1132B640E2F7A563C07862BE2D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
