@@ -14,5 +14,6 @@ target 'Lingo_01' do
   pod 'SwiftKeychainWrapper'
   pod 'Kingfisher', '~> 3.0'
   pod 'SwipeCellKit'
+  pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'develop'
 
 end
