@@ -21,6 +21,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var loadedInitialChatrooms = false
     var locationManager: CLLocationManager!
     var chatroomDownloader = ChatroomDownloader()
+    var selectedChatroom: Chatroom?
     private var chatrooms: [Chatroom] = []
     
     let numDays = PostLocationDateKey.manager.getCurrentDateKey()
@@ -49,7 +50,35 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return ChatroomCell()
+        let chatroom = chatrooms[indexPath.row]
+        print ("chatroom added3\(chatroom.chatroomName)")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "chatroomCell") as? ChatroomCell{
+            //cell.delegate = self
+            //cell.configureCell(post: post, userLocation: currentUserLocation)
+            print ("chatroom addedd\(chatroom.chatroomName)")
+            cell.textLabel?.text = chatroom.chatroomName
+            return cell
+            
+        } else {
+            return ChatroomCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatroom = chatrooms[indexPath.row]
+        performSegue(withIdentifier: "ChatVC", sender: chatroom)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if (segue.identifier == "ChatVC"){
+            if let chatroom = sender as? Chatroom{
+                let chatVC = segue.destination as! ChatVC
+                chatVC.chatroom = chatroom
+            }
+        }
     }
     
     func setupUserLocation(){
@@ -78,7 +107,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         } else{
             //if !firstTimeForUserLocationSettup{
             print ("locationCheck: \(currentUserLocation)")
-            chatrooms = []
+            //chatrooms = []
             tableView.reloadData()
             chatroomDownloader.getNearbyChatrooms(center: currentUserLocation, radius: 25.5)
             chatroomDownloader.getExitedChatrooms(center: currentUserLocation, radius: 25.5)
@@ -100,11 +129,28 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func sendChatroom(_ chatroom: Chatroom) {
-        
+        print ("chatroom added2")
+        tableView.beginUpdates()
+        chatrooms.insert(chatroom, at: 0)
+        let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
     
     func deleteChatroom(_ chatroomKey: String) {
-        
+        for (index, chatroom) in chatrooms.enumerated(){
+            if chatroomKey == chatroom.chatroomID{
+                deleteChatroomAtRow(index)
+            }
+        }
+    }
+    
+    func deleteChatroomAtRow(_ chatroomIndex: Int){
+        tableView.beginUpdates()
+        chatrooms.remove(at: chatroomIndex)
+        let indexPath: IndexPath = IndexPath(row: chatroomIndex, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
     
     func createChatroomToFirebase(){

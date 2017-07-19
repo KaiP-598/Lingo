@@ -29,6 +29,7 @@
 		4D71BA031E60566500511559 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA021E60566500511559 /* DataService.swift */; };
 		4D71BA051E613C2300511559 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA041E613C2300511559 /* Post.swift */; };
 		4D7BE1A31EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */; };
+		4D7BE1A81F05298900E8B3D1 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */; };
 		4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */; };
 		4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */; };
 		4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */; };
@@ -80,6 +81,8 @@
 		4D71BA021E60566500511559 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4D71BA041E613C2300511559 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomDownloadHelper.swift; sourceTree = "<group>"; };
+		4D7BE1A41F028E7100E8B3D1 /* EppingLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EppingLocation.gpx; sourceTree = "<group>"; };
+		4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocationKey.swift; sourceTree = "<group>"; };
 		4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDownloadHelper.swift; sourceTree = "<group>"; };
 		4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeStampHelper.swift; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 				4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */,
 				4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */,
 				4D7C8B0F1EA2488600D85B13 /* middleBoroughLocation.gpx */,
+				4D7BE1A41F028E7100E8B3D1 /* EppingLocation.gpx */,
 				4D7C8B0E1EA2442500D85B13 /* blackburnLocation.gpx */,
 				4DE099ED1E863BC500FFC5E5 /* claytonLocation.gpx */,
 				4D7C8B0C1E99DC5C00D85B13 /* monashLocation.gpx */,
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */,
+				4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */,
 			);
 			name = Chatroom;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
 				4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */,
+				4D7BE1A81F05298900E8B3D1 /* ChatVC.swift in Sources */,
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
 				4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */,
 				4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */,
