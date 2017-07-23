@@ -44,6 +44,7 @@
 		4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F2711ED819EF00015185 /* TermsVC.swift */; };
 		4DA95B9F1EEFDEF300A8C4C8 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */; };
 		4DA95BA21EEFE48500A8C4C8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */; };
+		4DB4A6BC1F22E94C00CFAEE1 /* FindPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4A6BB1F22E94C00CFAEE1 /* FindPasswordVC.swift */; };
 		4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */; };
 		4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */; };
 		4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */; };
@@ -102,6 +103,7 @@
 		4DA0F2711ED819EF00015185 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
 		4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		4DB4A6BB1F22E94C00CFAEE1 /* FindPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordVC.swift; sourceTree = "<group>"; };
 		4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsConstant.swift; sourceTree = "<group>"; };
 		4DE099D11E7FFAA100FFC5E5 /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
 		4DE099D21E7FFAA100FFC5E5 /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4DB4A6BA1F22E92F00CFAEE1 /* FindPassword */,
 				4D1E9E981EF3E13400466B98 /* Chatroom */,
 				4DA95B9D1EEFDEDA00A8C4C8 /* Comment */,
 				4DE099E71E80BE6000FFC5E5 /* AddPost */,
@@ -309,6 +312,14 @@
 				4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */,
 			);
 			name = CommentSection;
+			sourceTree = "<group>";
+		};
+		4DB4A6BA1F22E92F00CFAEE1 /* FindPassword */ = {
+			isa = PBXGroup;
+			children = (
+				4DB4A6BB1F22E94C00CFAEE1 /* FindPasswordVC.swift */,
+			);
+			name = FindPassword;
 			sourceTree = "<group>";
 		};
 		4DE099CF1E7FFAA100FFC5E5 /* GeoFire */ = {
@@ -518,6 +529,7 @@
 				4DA95B9F1EEFDEF300A8C4C8 /* CommentVC.swift in Sources */,
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
 				4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */,
+				4DB4A6BC1F22E94C00CFAEE1 /* FindPasswordVC.swift in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
 				4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */,
 				4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */,

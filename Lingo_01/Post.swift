@@ -17,6 +17,7 @@ class Post {
     fileprivate var _postKey: String!
     fileprivate var _authorID: String!
     fileprivate var _timeStamp: String!
+    fileprivate var _isAnonymous: String!
     fileprivate var _postRef: FIRDatabaseReference!
     
     var caption: String {
@@ -43,12 +44,17 @@ class Post {
         return _timeStamp
     }
     
-    init(caption: String, imageUrl: String, likes: Int, authorID: String, timeStamp: String){
+    var isAnonymous: String? {
+        return _isAnonymous
+    }
+    
+    init(caption: String, imageUrl: String, likes: Int, authorID: String, timeStamp: String, isAnonymous: String){
         self._caption = caption
         self._imageUrl = caption
         self._likes = likes
         self._authorID = authorID
         self._timeStamp = timeStamp
+        self._isAnonymous = isAnonymous
     }
     
     init(postKey: String, postData: Dictionary<String,Any>){
@@ -71,6 +77,9 @@ class Post {
         }
         if let timeStamp = postData["timeStamp"] as? String{
             self._timeStamp = timeStamp
+        }
+        if let isAnonymous = postData["isAnonymous"] as? String{
+            self._isAnonymous = isAnonymous
         }
         
         _postRef = DataService.ds.REF_POSTS.child(_postKey)

@@ -11,11 +11,14 @@ import Firebase
 import JSQMessagesViewController
 import SwiftKeychainWrapper
 import Photos
+import Kingfisher
 
 class ChatVC: JSQMessagesViewController {
 
     var chatroomRef: FIRDatabaseReference?
     var photoRef: FIRStorageReference?
+    var userNameRef: FIRDatabaseReference!
+    var profileImageRef: FIRDatabaseReference!
     private var messageRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
     private var updatedMessageRefHandle: FIRDatabaseHandle?
@@ -39,9 +42,9 @@ class ChatVC: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        theSenderDisplayname = "Random Name"
         setupFirebaseRef()
         observeMessages()
+        obtainUserName()
 //        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
 //        let navigationBarHeight2: CGFloat = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
 //        self.collectionView?.contentInset.top = navigationBarHeight
@@ -65,6 +68,31 @@ class ChatVC: JSQMessagesViewController {
         }
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId() {
+            return nil
+        } else {
+            print ("\(message.senderDisplayName)")
+            return NSAttributedString(string: message.senderDisplayName)
+            
+        }
+    }
+
+
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAt indexPath: IndexPath) -> CGFloat {
+        //sender name height
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId() {
+            return 0.0
+        } else {
+            
+            return 27.0
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
@@ -74,15 +102,25 @@ class ChatVC: JSQMessagesViewController {
         } else {
             cell.textView?.textColor = UIColor.black
         }
+        cell.avatarImageView?.clipsToBounds = true
+        cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.frame.size.height / 2.3
+        profileImageRef = DataService.ds.REF_USERS.child("\(message.senderId)").child("profile").child("profileImageUrl")
+        profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let profileImageUrl = snapshot.value as? String ?? ""
+            let url = URL(string: "\(profileImageUrl)")!
+            cell.avatarImageView?.kf.setImage(with: url)
+        })
         return cell
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        let placeHolderImage = UIImage(named: "DefaultMask")
-        let avatarImage = JSQMessagesAvatarImage(avatarImage: placeHolderImage, highlightedImage: nil, placeholderImage: placeHolderImage!)
-        
-        return avatarImage
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, avatarImageDataForItemAt indexPath: IndexPath) -> (JSQMessageAvatarImageDataSource!) {
+        return nil
     }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, didTapAvatarImageView avatarImageView: UIImageView, at indexPath: IndexPath) {
+        print ("\(indexPath.row)")
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
@@ -122,13 +160,21 @@ class ChatVC: JSQMessagesViewController {
     }
     
     func setupFirebaseRef(){
-        print(chatroom!.chatroomID)
+        userNameRef = DataService.ds.REF_USER_CURRENT.child("profile").child("username")
         chatroomRef = DataService.ds.REF_CHATROOMS.child("\(chatroom!.chatroomID)")
         if let chatroomReference = chatroomRef{
             messageRef = chatroomReference.child("messages")
         }
         
         photoRef = DataService.ds.REF_CHAT_IMAGES
+    }
+    
+    func obtainUserName(){
+        var senderDisplayName:String!
+        userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let userName = snapshot.value as? String ?? ""
+            self.theSenderDisplayname = userName
+        })
     }
     
     private func observeMessages() {

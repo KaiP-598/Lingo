@@ -26,6 +26,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        //FIRAuth.auth()?.sendPasswordReset(withEmail: "kaipeng.tech@gmail.com", completion: nil)
     }
     
     
@@ -143,6 +144,11 @@ class SignInVC: UIViewController {
         alert.addAction(agreeBtn)
         alert.addAction(cancelBtn)
         present(alert, animated:true, completion:nil)
+    }
+    
+    
+    @IBAction func forgotPasswordBtnPressed(_ sender: Any) {
+        
     }
 }
 

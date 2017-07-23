@@ -50,14 +50,15 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         imagePicker.dismiss(animated:true, completion: nil)
     }
     
-    func postToFirebase(_ imgUrl: String){
+    func postToFirebase(_ imgUrl: String, isAnonymous: String){
         let timeInt = Int(Date().timeIntervalSince1970)
         let post: Dictionary<String, AnyObject> = [
             "caption": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
             "likes": 0 as AnyObject,
             "userID": currentUser.key as AnyObject,
-            "timeStamp": "\(timeInt)" as AnyObject
+            "timeStamp": "\(timeInt)" as AnyObject,
+            "isAnonymous": isAnonymous as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
@@ -83,17 +84,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func addImageBtnTapped(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
-    }
-
-    @IBAction func cancelBtnTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func shareBtnTapped(_ sender: Any) {
+    func sharePost(isAnonymous: String){
         guard let caption = captionField.text, caption != "" else{
             print ("Log: Caption must be entered")
             return
@@ -117,12 +108,39 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
                     print ("Log: Successfully uploaded image to Firebase storage")
                     let downloadURL = metaData?.downloadURL()?.absoluteString
                     if let url = downloadURL{
-                        self.postToFirebase(url)
+                        self.postToFirebase(url, isAnonymous: isAnonymous)
                     }
                     
                 }
                 
             }
         }
+    }
+    
+    @IBAction func addImageBtnTapped(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    @IBAction func cancelBtnTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func shareBtnTapped(_ sender: Any) {
+        //sharePost(userID: currentUser.key)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+
+        }
+        actionSheet.addAction(cancelAction)
+        let myselfAction = UIAlertAction(title: "Post As Myself", style: .default) { action in
+            self.sharePost(isAnonymous: "false")
+        }
+        actionSheet.addAction(myselfAction)
+        let anonymousAction = UIAlertAction(title: "Post Anonymously", style: .default) { action in
+            self.sharePost(isAnonymous: "true")
+        }
+        actionSheet.addAction(anonymousAction)
+        present(actionSheet, animated: true, completion: nil)
     }
 }
