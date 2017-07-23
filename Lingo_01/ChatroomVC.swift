@@ -22,6 +22,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var locationManager: CLLocationManager!
     var chatroomDownloader = ChatroomDownloader()
     var selectedChatroom: Chatroom?
+    var isAnonymous: Bool!
     private var chatrooms: [Chatroom] = []
     
     let numDays = PostLocationDateKey.manager.getCurrentDateKey()
@@ -66,7 +67,23 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatroom = chatrooms[indexPath.row]
-        performSegue(withIdentifier: "ChatVC", sender: chatroom)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            
+        }
+        actionSheet.addAction(cancelAction)
+        let myselfAction = UIAlertAction(title: "Enter As Myself", style: .default) { action in
+            self.isAnonymous = false
+            self.performSegue(withIdentifier: "ChatVC", sender: chatroom)
+        }
+        actionSheet.addAction(myselfAction)
+        let anonymousAction = UIAlertAction(title: "Enter Anonymously", style: .default) { action in
+            self.isAnonymous = true
+            self.performSegue(withIdentifier: "ChatVC", sender: chatroom)
+        }
+        actionSheet.addAction(anonymousAction)
+        present(actionSheet, animated: true, completion: nil)
+        
     }
     
     
@@ -77,6 +94,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             if let chatroom = sender as? Chatroom{
                 let chatVC = segue.destination as! ChatVC
                 chatVC.chatroom = chatroom
+                chatVC.isAnonymous = isAnonymous
             }
         }
     }
@@ -177,7 +195,6 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             return
         }
         createChatroomToFirebase()
-        
     }
 
 

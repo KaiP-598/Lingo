@@ -19,13 +19,18 @@ class ChatVC: JSQMessagesViewController {
     var photoRef: FIRStorageReference?
     var userNameRef: FIRDatabaseReference!
     var profileImageRef: FIRDatabaseReference!
+    var anonymousRef: FIRDatabaseReference!
     private var messageRef: FIRDatabaseReference?
     private var newMessageRefHandle: FIRDatabaseHandle?
     private var updatedMessageRefHandle: FIRDatabaseHandle?
+    private var anonymousRefHandle: FIRDatabaseHandle?
     private var photoMessageMap = [String: JSQPhotoMediaItem]()
     var chatroom: Chatroom?
     var theSenderDisplayname: String?
+    var isAnonymous: Bool?
     var messages = [JSQMessage]()
+    var anonymousList = [String]()
+    var anonymousDict = [String: String]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     private let imageURLNotSetKey = "NOTSET"
@@ -43,8 +48,11 @@ class ChatVC: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFirebaseRef()
+        uploadAnonymousStatusToFirebase()
+        getAnonymousList()
         observeMessages()
         obtainUserName()
+
 //        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
 //        let navigationBarHeight2: CGFloat = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
 //        self.collectionView?.contentInset.top = navigationBarHeight
@@ -70,10 +78,15 @@ class ChatVC: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
         let message = messages[indexPath.item]
-        
+        let anonymousVal = anonymousDict[message.senderId] as! String
         if message.senderId == senderId() {
             return nil
-        } else {
+        }
+        else if (anonymousVal == "true")
+        {
+            return NSAttributedString(string: "Anonymous")
+        }
+        else {
             print ("\(message.senderDisplayName)")
             return NSAttributedString(string: message.senderDisplayName)
             
@@ -96,7 +109,7 @@ class ChatVC: JSQMessagesViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
-        
+        let anonymousVal = anonymousDict[message.senderId]!
         if message.senderId == senderId() {
             cell.textView?.textColor = UIColor.white
         } else {
@@ -104,12 +117,18 @@ class ChatVC: JSQMessagesViewController {
         }
         cell.avatarImageView?.clipsToBounds = true
         cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.frame.size.height / 2.3
-        profileImageRef = DataService.ds.REF_USERS.child("\(message.senderId)").child("profile").child("profileImageUrl")
-        profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let profileImageUrl = snapshot.value as? String ?? ""
-            let url = URL(string: "\(profileImageUrl)")!
-            cell.avatarImageView?.kf.setImage(with: url)
-        })
+        if anonymousVal == "true"{
+            let avatarImg = UIImage(named: "DefaultMask")
+            cell.avatarImageView?.image = avatarImg
+        }else{
+            profileImageRef = DataService.ds.REF_USERS.child("\(message.senderId)").child("profile").child("profileImageUrl")
+            profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                let profileImageUrl = snapshot.value as? String ?? ""
+                let url = URL(string: "\(profileImageUrl)")!
+                cell.avatarImageView?.kf.setImage(with: url)
+            })
+        }
+
         return cell
     }
     
@@ -139,7 +158,7 @@ class ChatVC: JSQMessagesViewController {
         let messageItem = [ // 2
             "senderId": senderId,
             "senderName": senderDisplayName,
-            "text": text,
+            "text": text
             ]
         
         itemRef?.setValue(messageItem)
@@ -164,16 +183,32 @@ class ChatVC: JSQMessagesViewController {
         chatroomRef = DataService.ds.REF_CHATROOMS.child("\(chatroom!.chatroomID)")
         if let chatroomReference = chatroomRef{
             messageRef = chatroomReference.child("messages")
+            anonymousRef = chatroomReference.child("anonymous")
         }
         
         photoRef = DataService.ds.REF_CHAT_IMAGES
     }
     
     func obtainUserName(){
-        var senderDisplayName:String!
         userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let userName = snapshot.value as? String ?? ""
             self.theSenderDisplayname = userName
+        })
+    }
+    
+    func uploadAnonymousStatusToFirebase(){
+        let statusItem = [ // 2
+            "\(senderId())": "\(isAnonymous!)",
+        ]
+        anonymousRef.updateChildValues(statusItem)
+    }
+    
+    func getAnonymousList(){
+        anonymousRefHandle = anonymousRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let anonymousID = snapshot.key
+            let messageData = snapshot.value as! String
+            self.anonymousDict[anonymousID] = messageData
+            print (self.anonymousDict)
         })
     }
     
@@ -228,11 +263,13 @@ class ChatVC: JSQMessagesViewController {
     private func addMessage(withId id: String, name: String, text: String) {
         let message = JSQMessage(senderId: id, displayName: name, text: text)
         messages.append(message)
+       // anonymousList.append("\(isAnonymous!)")
     }
     
     private func addPhotoMessage(withId id: String, key: String, mediaItem: JSQPhotoMediaItem) {
       let message = JSQMessage(senderId: id, displayName: "", media: mediaItem)
       messages.append(message)
+      //anonymousList.append("\(isAnonymous!)")
         
       if (mediaItem.image == nil) {
           photoMessageMap[key] = mediaItem
@@ -283,7 +320,7 @@ class ChatVC: JSQMessagesViewController {
         
         let messageItem = [
             "photoURL": imageURLNotSetKey,
-            "senderId": senderId(),
+            "senderId": senderId()
             ]
         
         itemRef.setValue(messageItem)
