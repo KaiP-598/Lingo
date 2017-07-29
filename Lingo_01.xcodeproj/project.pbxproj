@@ -29,6 +29,7 @@
 		4D71BA031E60566500511559 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA021E60566500511559 /* DataService.swift */; };
 		4D71BA051E613C2300511559 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71BA041E613C2300511559 /* Post.swift */; };
 		4D7BE1A31EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */; };
+		4D7BE1A81F05298900E8B3D1 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */; };
 		4D7C8B061E8BC03C00D85B13 /* PostLocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */; };
 		4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */; };
 		4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */; };
@@ -43,6 +44,7 @@
 		4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0F2711ED819EF00015185 /* TermsVC.swift */; };
 		4DA95B9F1EEFDEF300A8C4C8 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */; };
 		4DA95BA21EEFE48500A8C4C8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */; };
+		4DB4A6BC1F22E94C00CFAEE1 /* FindPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4A6BB1F22E94C00CFAEE1 /* FindPasswordVC.swift */; };
 		4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */; };
 		4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099D81E7FFAA100FFC5E5 /* GeoFire.m */; };
 		4DE099E21E7FFAA100FFC5E5 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE099DA1E7FFAA100FFC5E5 /* GFBase32Utils.m */; };
@@ -80,6 +82,8 @@
 		4D71BA021E60566500511559 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		4D71BA041E613C2300511559 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D7BE1A21EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomDownloadHelper.swift; sourceTree = "<group>"; };
+		4D7BE1A41F028E7100E8B3D1 /* EppingLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EppingLocation.gpx; sourceTree = "<group>"; };
+		4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		4D7C8B051E8BC03C00D85B13 /* PostLocationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocationKey.swift; sourceTree = "<group>"; };
 		4D7C8B081E8D31FC00D85B13 /* PostDownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDownloadHelper.swift; sourceTree = "<group>"; };
 		4D7C8B0A1E99D4A600D85B13 /* timeStampHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeStampHelper.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		4DA0F2711ED819EF00015185 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		4DA95B9E1EEFDEF300A8C4C8 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
 		4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		4DB4A6BB1F22E94C00CFAEE1 /* FindPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordVC.swift; sourceTree = "<group>"; };
 		4DC8910F1EDC047100DBA361 /* TermsAndConditionsConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsConstant.swift; sourceTree = "<group>"; };
 		4DE099D11E7FFAA100FFC5E5 /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
 		4DE099D21E7FFAA100FFC5E5 /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 				4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */,
 				4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */,
 				4D7C8B0F1EA2488600D85B13 /* middleBoroughLocation.gpx */,
+				4D7BE1A41F028E7100E8B3D1 /* EppingLocation.gpx */,
 				4D7C8B0E1EA2442500D85B13 /* blackburnLocation.gpx */,
 				4DE099ED1E863BC500FFC5E5 /* claytonLocation.gpx */,
 				4D7C8B0C1E99DC5C00D85B13 /* monashLocation.gpx */,
@@ -187,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */,
+				4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */,
 			);
 			name = Chatroom;
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4DB4A6BA1F22E92F00CFAEE1 /* FindPassword */,
 				4D1E9E981EF3E13400466B98 /* Chatroom */,
 				4DA95B9D1EEFDEDA00A8C4C8 /* Comment */,
 				4DE099E71E80BE6000FFC5E5 /* AddPost */,
@@ -304,6 +312,14 @@
 				4DA95BA11EEFE48500A8C4C8 /* CommentCell.swift */,
 			);
 			name = CommentSection;
+			sourceTree = "<group>";
+		};
+		4DB4A6BA1F22E92F00CFAEE1 /* FindPassword */ = {
+			isa = PBXGroup;
+			children = (
+				4DB4A6BB1F22E94C00CFAEE1 /* FindPasswordVC.swift */,
+			);
+			name = FindPassword;
 			sourceTree = "<group>";
 		};
 		4DE099CF1E7FFAA100FFC5E5 /* GeoFire */ = {
@@ -513,6 +529,7 @@
 				4DA95B9F1EEFDEF300A8C4C8 /* CommentVC.swift in Sources */,
 				4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */,
 				4DE099E11E7FFAA100FFC5E5 /* GeoFire.m in Sources */,
+				4DB4A6BC1F22E94C00CFAEE1 /* FindPasswordVC.swift in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
 				4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */,
 				4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */,
@@ -533,6 +550,7 @@
 				4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */,
 				4D2E459D1E4EE74F0048E2DD /* FancyView.swift in Sources */,
 				4DA0F2721ED819EF00015185 /* TermsVC.swift in Sources */,
+				4D7BE1A81F05298900E8B3D1 /* ChatVC.swift in Sources */,
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
 				4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */,
 				4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */,

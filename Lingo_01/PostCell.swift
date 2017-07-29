@@ -83,7 +83,7 @@ class PostCell: UITableViewCell {
         self.shareImg.isHidden = true
         
         
-        if (post.authorID != nil) {
+        if (post.authorID != nil && post.isAnonymous == "false") {
             print ("xPost: \(post.caption)")
             userImageRef = DataService.ds.REF_USERS.child(post.authorID!).child("profile").child("profileImageUrl")
             userNameRef = DataService.ds.REF_USERS.child(post.authorID!).child("profile").child("username")
@@ -116,7 +116,7 @@ class PostCell: UITableViewCell {
             })
             
         } else{
-            self.profileImg.image = UIImage(named: "profile")
+            self.profileImg.image = UIImage(named: "DefaultMask")
             self.usernameLbl.text = "Anonymous"
         }
         

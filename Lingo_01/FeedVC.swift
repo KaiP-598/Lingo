@@ -104,7 +104,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     func setupUserLocation(){
-        print("postAddedAgagin")
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -126,7 +125,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         } else{
             //if !firstTimeForUserLocationSettup{
                 print ("postAdded: \(currentUserLocation)")
-                posts = []
+                //posts = []
                 tableView.reloadData()
                 postDownloader.getNearbyPosts(center: currentUserLocation, radius: 25.5)
                 postDownloader.getExitedPosts(center: currentUserLocation, radius: 25.5)

@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="98" width="375" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatroomCell" id="eOb-Gm-h7S">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatroomCell" id="eOb-Gm-h7S" customClass="ChatroomCell" customModule="Lingo_01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eOb-Gm-h7S" id="zcL-kc-s0X">
@@ -86,16 +86,17 @@
                     <connections>
                         <outlet property="createTextField" destination="dGz-9s-tGx" id="TVB-qz-7lj"/>
                         <outlet property="tableView" destination="ugU-i6-BI6" id="pmd-c2-04m"/>
+                        <segue destination="Prr-eL-EW9" kind="show" identifier="ChatVC" id="Qip-Ck-TgX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCE-6P-BZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696.8" y="1363.2683658170915"/>
+            <point key="canvasLocation" x="1772" y="1362"/>
         </scene>
-        <!--View Controller-->
+        <!--ChatVC-->
         <scene sceneID="vnC-sQ-WUu">
             <objects>
-                <viewController id="Prr-eL-EW9" sceneMemberID="viewController">
+                <viewController id="Prr-eL-EW9" customClass="ChatVC" customModule="Lingo_01" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rBe-ad-1tb"/>
                         <viewControllerLayoutGuide type="bottom" id="bXC-BU-Ubb"/>

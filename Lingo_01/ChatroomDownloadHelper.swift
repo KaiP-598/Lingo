@@ -30,6 +30,7 @@ class ChatroomDownloader{
                 if let chatroomDict = snapshot.value as? Dictionary<String, Any>{
                     let key = snapshot.key
                     let chatroom = Chatroom(chatroomKey: key, chatroomData: chatroomDict)
+                    print ("chatroom added")
                     self.delegate?.sendChatroom(chatroom)
                 }
             })
