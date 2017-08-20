@@ -13,7 +13,6 @@
 		4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1B1E4ECF11006BC916 /* Main.storyboard */; };
 		4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */; };
 		4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */; };
-		4D00DD2A1E4ECF7D006BC916 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */; };
 		4D1E9E971EF3D71600466B98 /* Chatrooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E9E951EF3D71600466B98 /* Chatrooms.storyboard */; };
 		4D1E9E9A1EF3E40E00466B98 /* ChatroomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */; };
 		4D1E9E9D1EF3E4F200466B98 /* ChatroomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */; };
@@ -23,6 +22,7 @@
 		4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */; };
 		4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */; };
 		4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */; };
+		4D6B63C51F49A2A8003BC026 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D6B63C41F49A2A8003BC026 /* GoogleService-Info.plist */; };
 		4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FB1E5F097800511559 /* FeedVC.swift */; };
 		4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FD1E60276A00511559 /* CircieView.swift */; };
 		4D71BA001E603C0200511559 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FF1E603C0200511559 /* PostCell.swift */; };
@@ -65,7 +65,6 @@
 		4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D00DD211E4ECF11006BC916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D00DD231E4ECF11006BC916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D1E9E961EF3D71600466B98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chatrooms.storyboard; sourceTree = "<group>"; };
 		4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomVC.swift; sourceTree = "<group>"; };
 		4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomCell.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = ../RoundBtn.swift; sourceTree = "<group>"; };
 		4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		4D6B63C41F49A2A8003BC026 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D71B9FA1E55DA2900511559 /* Lingo_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lingo_01.entitlements; sourceTree = "<group>"; };
 		4D71B9FB1E5F097800511559 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		4D71B9FD1E60276A00511559 /* CircieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircieView.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */,
 				4D7C8B101EA5065300D85B13 /* claytonSouthLocation.gpx */,
 				4D00DD231E4ECF11006BC916 /* Info.plist */,
-				4D00DD291E4ECF7D006BC916 /* GoogleService-Info.plist */,
+				4D6B63C41F49A2A8003BC026 /* GoogleService-Info.plist */,
 				4DE099E61E7FFC5000FFC5E5 /* Lingo-Bridging-Header.h */,
 				4D7C8B0F1EA2488600D85B13 /* middleBoroughLocation.gpx */,
 				4D7BE1A41F028E7100E8B3D1 /* EppingLocation.gpx */,
@@ -463,8 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */,
-				4D00DD2A1E4ECF7D006BC916 /* GoogleService-Info.plist in Resources */,
 				4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */,
+				4D6B63C51F49A2A8003BC026 /* GoogleService-Info.plist in Resources */,
 				4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */,
 				4D1E9E971EF3D71600466B98 /* Chatrooms.storyboard in Resources */,
 			);
