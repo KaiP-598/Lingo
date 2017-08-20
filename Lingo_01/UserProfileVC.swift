@@ -34,19 +34,21 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let profileImageUrl = snapshot.value as? String ?? ""
-            let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
-            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                if error != nil {
-                    print ("Log: Unable to download profile image")
-                } else{
-                    print ("Log: Profile image downloaded successfully")
-                    if let imgData = data {
-                        if let img = UIImage(data: imgData){
-                        self.profileImage.image = img
-                        }
-                    }
-                }
-            })
+            let url = URL(string: "\(profileImageUrl)")!
+            self.profileImage.kf.setImage(with: url)
+//            let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
+//            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+//                if error != nil {
+//                    print ("Log: Unable to download profile image")
+//                } else{
+//                    print ("Log: Profile image downloaded successfully")
+//                    if let imgData = data {
+//                        if let img = UIImage(data: imgData){
+//                        self.profileImage.image = img
+//                        }
+//                    }
+//                }
+//            })
         })
     }
     
