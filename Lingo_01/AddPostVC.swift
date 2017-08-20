@@ -46,6 +46,8 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             imageSelected = true
         } else{
             print ("Log: A valid image isn't selected")
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            addedImage.image = image
         }
         imagePicker.dismiss(animated:true, completion: nil)
     }
@@ -118,7 +120,24 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     }
     
     @IBAction func addImageBtnTapped(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            
+        }
+        actionSheet.addAction(cancelAction)
+        let cameraOption = UIAlertAction(title: "Take A Photo", style: .default) { action in
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(self.imagePicker, animated: true, completion:nil)
+            }
+        }
+        actionSheet.addAction(cameraOption)
+        let photoAlbumOption = UIAlertAction(title: "From Camera Roll", style: .default) { action in
+            self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(self.imagePicker, animated: true, completion:nil)
+        }
+        actionSheet.addAction(photoAlbumOption)
+        present(actionSheet, animated: true, completion: nil)
     }
 
     @IBAction func cancelBtnTapped(_ sender: Any) {

@@ -31,6 +31,7 @@ class ChatVC: JSQMessagesViewController {
     var messages = [JSQMessage]()
     var anonymousList = [String]()
     var anonymousDict = [String: String]()
+    var senderAvatarDict = [String: String]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     private let imageURLNotSetKey = "NOTSET"
@@ -77,11 +78,13 @@ class ChatVC: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
+        //Decide display of the sender name
         let message = messages[indexPath.item]
         let anonymousVal = anonymousDict[message.senderId] as! String
         if message.senderId == senderId() {
             return nil
         }
+        //if the item is sent by an anonymous person
         else if (anonymousVal == "true")
         {
             return NSAttributedString(string: "Anonymous")
@@ -97,7 +100,7 @@ class ChatVC: JSQMessagesViewController {
     override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAt indexPath: IndexPath) -> CGFloat {
         //sender name height
         let message = messages[indexPath.item]
-        
+        //decide the sender name label height
         if message.senderId == senderId() {
             return 0.0
         } else {
@@ -116,14 +119,19 @@ class ChatVC: JSQMessagesViewController {
             cell.textView?.textColor = UIColor.black
         }
         cell.avatarImageView?.clipsToBounds = true
-        cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.frame.size.height / 2.3
+        cell.avatarImageView?.layer.cornerRadius = cell.avatarImageView!.frame.size.height / 2.2
         if anonymousVal == "true"{
             let avatarImg = UIImage(named: "DefaultMask")
             cell.avatarImageView?.image = avatarImg
-        }else{
+        } else if let url = senderAvatarDict[message.senderId] {
+            let kfUrl = URL(string: "\(url)")!
+            cell.avatarImageView?.kf.setImage(with: kfUrl)
+        }
+        else{
             profileImageRef = DataService.ds.REF_USERS.child("\(message.senderId)").child("profile").child("profileImageUrl")
             profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 let profileImageUrl = snapshot.value as? String ?? ""
+                self.senderAvatarDict[message.senderId] = profileImageUrl
                 let url = URL(string: "\(profileImageUrl)")!
                 cell.avatarImageView?.kf.setImage(with: url)
             })
@@ -169,13 +177,31 @@ class ChatVC: JSQMessagesViewController {
     override func didPressAccessoryButton(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-            picker.sourceType = UIImagePickerControllerSourceType.camera
-        } else {
-            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        }
         
-        present(picker, animated: true, completion:nil)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            
+        }
+        actionSheet.addAction(cancelAction)
+        let cameraOption = UIAlertAction(title: "Take A Photo", style: .default) { action in
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+                picker.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(picker, animated: true, completion:nil)
+            }
+        }
+        actionSheet.addAction(cameraOption)
+        let photoAlbumOption = UIAlertAction(title: "From Camera Roll", style: .default) { action in
+            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(picker, animated: true, completion:nil)
+        }
+        actionSheet.addAction(photoAlbumOption)
+        present(actionSheet, animated: true, completion: nil)
+//        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+//            picker.sourceType = UIImagePickerControllerSourceType.camera
+//        } else {
+//            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+//        }
+
     }
     
     func setupFirebaseRef(){
