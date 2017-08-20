@@ -2,7 +2,7 @@
 //  TermsVC.swift
 //  Lingo_01
 //
-//  Created by WuKaipeng on 28/08/2017.
+//  Created by WuKaipeng on 18/08/2017.
 //  Copyright © 2017 WuKaipeng. All rights reserved.
 //
 
