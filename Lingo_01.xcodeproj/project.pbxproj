@@ -236,14 +236,13 @@
 		4D2E459B1E4ED25E0048E2DD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4D6B63C71F52490B003BC026 /* SignIn */,
+				4D6B63C61F5248F9003BC026 /* PostFeed */,
 				4DB4A6BA1F22E92F00CFAEE1 /* FindPassword */,
 				4D1E9E981EF3E13400466B98 /* Chatroom */,
 				4DA95B9D1EEFDEDA00A8C4C8 /* Comment */,
 				4DE099E71E80BE6000FFC5E5 /* AddPost */,
 				4D8B432D1E764A7B0051262C /* UserProfile */,
-				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
-				4D71B9FB1E5F097800511559 /* FeedVC.swift */,
-				4DA0F2711ED819EF00015185 /* TermsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,6 +257,23 @@
 				4DE449DE1EF3A1AA0061AF03 /* colourHelper.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		4D6B63C61F5248F9003BC026 /* PostFeed */ = {
+			isa = PBXGroup;
+			children = (
+				4D71B9FB1E5F097800511559 /* FeedVC.swift */,
+			);
+			name = PostFeed;
+			sourceTree = "<group>";
+		};
+		4D6B63C71F52490B003BC026 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				4D00DD191E4ECF11006BC916 /* SignInVC.swift */,
+				4DA0F2711ED819EF00015185 /* TermsVC.swift */,
+			);
+			name = SignIn;
 			sourceTree = "<group>";
 		};
 		4D71BA011E60564C00511559 /* Services */ = {

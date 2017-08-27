@@ -93,7 +93,7 @@
             </objects>
             <point key="canvasLocation" x="1772" y="1362"/>
         </scene>
-        <!--ChatVC-->
+        <!--Chatroom-->
         <scene sceneID="vnC-sQ-WUu">
             <objects>
                 <viewController id="Prr-eL-EW9" customClass="ChatVC" customModule="Lingo_01" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,6 +106,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Chatroom" id="zJF-pb-9v6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="4sQ-Iq-gbJ">
+                            <connections>
+                                <action selector="moreBtnPressed:" destination="Prr-eL-EW9" id="je9-zL-myv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Z3-0A-fNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

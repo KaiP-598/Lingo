@@ -28,6 +28,7 @@ class ChatVC: JSQMessagesViewController {
     var chatroom: Chatroom?
     var theSenderDisplayname: String?
     var isAnonymous: Bool?
+    var chatroomCreatorID: String?
     var messages = [JSQMessage]()
     var anonymousList = [String]()
     var anonymousDict = [String: String]()
@@ -49,10 +50,12 @@ class ChatVC: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFirebaseRef()
+        obtainChatroomCreatorID()
         uploadAnonymousStatusToFirebase()
         getAnonymousList()
         observeMessages()
         obtainUserName()
+        observeChatroomDeletion()
 
 //        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
 //        let navigationBarHeight2: CGFloat = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
@@ -215,10 +218,23 @@ class ChatVC: JSQMessagesViewController {
         photoRef = DataService.ds.REF_CHAT_IMAGES
     }
     
+    func obtainChatroomCreatorID(){
+        chatroomRef?.child("chatroomCreator").observeSingleEvent(of: .value, with: { (snapshot) in
+            let chatroomCreator = snapshot.value as? String ?? ""
+            self.chatroomCreatorID = chatroomCreator
+        })
+    }
+    
     func obtainUserName(){
         userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let userName = snapshot.value as? String ?? ""
             self.theSenderDisplayname = userName
+        })
+    }
+    
+    func observeChatroomDeletion() {
+        DataService.ds.REF_CHATROOMS_LOC_DATE_KEY.child("\(chatroom!.chatroomID)").observeSingleEvent(of: .childRemoved, with: { (snapshot) in
+            self.navigationController?.popViewController(animated: true)
         })
     }
     
@@ -372,6 +388,22 @@ class ChatVC: JSQMessagesViewController {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
+    
+    @IBAction func moreBtnPressed(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if chatroomCreatorID == self.senderId() {
+            let deleteAction = UIAlertAction(title: "Delete Chatroom", style: .destructive) { action in
+                DataService.ds.REF_CHATROOMS_LOC_DATE_KEY.child("\(self.chatroom!.chatroomID)").removeValue()
+            }
+            actionSheet.addAction(deleteAction)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            
+        }
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
 }
 
 extension ChatVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
