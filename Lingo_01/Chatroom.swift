@@ -12,6 +12,7 @@ class Chatroom {
     
     fileprivate var _chatroomID: String!
     fileprivate var _chatroomName: String!
+    fileprivate var _chatroomLocationKey: String!
     
     
     var chatroomID: String {
@@ -21,11 +22,16 @@ class Chatroom {
     var chatroomName: String {
         return _chatroomName
     }
+    
+    var chatroomLocationKey: String {
+        return _chatroomLocationKey
+    }
 
     
-    init(chatroomID: String,chatroomName: String ){
+    init(chatroomID: String,chatroomName: String, chatroomLocationKey: String ){
         self._chatroomID = chatroomID
         self._chatroomName = chatroomName
+        self._chatroomLocationKey = chatroomLocationKey
 
     }
     
@@ -34,6 +40,10 @@ class Chatroom {
         
         if let chatroomName = chatroomData["chatroomName"] as? String{
             self._chatroomName = chatroomName
+        }
+        
+        if let chatroomLocationKey = chatroomData["chatroomLocationKey"] as? String{
+            self._chatroomLocationKey = chatroomLocationKey
         }
 
     }

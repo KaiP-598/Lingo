@@ -174,14 +174,15 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func createChatroomToFirebase(){
         //let timeInt = Int(Date().timeIntervalSince1970)
         let chatroom: Dictionary<String, AnyObject> = [
-            "chatroomName": createTextField.text! as AnyObject
+            "chatroomName": createTextField.text! as AnyObject,
+            "chatroomCreator": KeychainWrapper.standard.string(forKey: KEY_UID) as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_CHATROOMS.childByAutoId()
         firebasePost.setValue(chatroom)
         geoFirePost.setLocation(currentUserLocation, forKey: firebasePost.key) { (error) in
-            if error != nil{
-                print ("unable to update location: \(error)")
+            if let err = error{
+                print ("unable to update location: \(err)")
             } else {
                 print ("post location updated successfully")
             }
