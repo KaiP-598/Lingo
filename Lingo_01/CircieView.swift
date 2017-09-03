@@ -2,7 +2,7 @@
 //  CircieView.swift
 //  Lingo_01
 //
-//  Created by WuKaipeng on 24/02/2017.
+//  Created by WuKaipeng on 24/03/2017.
 //  Copyright © 2017 WuKaipeng. All rights reserved.
 //
 
