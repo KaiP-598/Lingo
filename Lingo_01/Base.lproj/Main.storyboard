@@ -259,11 +259,11 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lingo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-hL-TKG">
-                                        <rect key="frame" x="155" y="24" width="66" height="36"/>
+                                        <rect key="frame" x="155.5" y="24" width="65.5" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="9Cr-xt-zay"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="26"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="26"/>
                                         <color key="textColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="0.84806034482758619" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>

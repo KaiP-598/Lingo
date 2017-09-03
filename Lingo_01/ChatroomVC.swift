@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import ChameleonFramework
+import SCLAlertView
 
 class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, SendChannelToChatroomVcDelegate {
 
@@ -29,7 +31,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // setupColor()
         setupUserLocation()
         
         tableView.delegate = self
@@ -39,6 +41,27 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         geoFireUser = GeoFire(firebaseRef: DataService.ds.REF_USERS_LOCATION)
         geoFirePost = GeoFire(firebaseRef:DataService.ds.REF_CHATROOMS_LOCATION.child(numDays))
         
+
+    }
+    
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        
+//    }
+//    
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
+    
+
+    func setupColor(){
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = FlatWhite()
+        self.navigationController?.navigationBar.isTranslucent = true
+        let titleDict = [NSForegroundColorAttributeName: FlatRed()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict
 
     }
     
@@ -198,5 +221,16 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         createChatroomToFirebase()
     }
 
+    @IBAction func createChatroomBtnPressed(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(
+            kCircleIconHeight: 55.0,
+            showCircularIcon: true
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        let chatroomText = alertView.addTextField("Enter Chatroom name...")
+        let passwordText = alertView.addTextField("Enter Password...")
+        let alertViewIcon = UIImage(named: "DefaultMask") //Replace the IconImage text with the image name
+        alertView.showInfo("Create Chatroom", subTitle: "Leave the password field blank to create a public chatroom", closeButtonTitle:"Cancel", circleIconImage: alertViewIcon)
+    }
 
 }

@@ -81,7 +81,14 @@
                             <constraint firstAttribute="trailing" secondItem="ugU-i6-BI6" secondAttribute="trailing" id="ev9-IU-LOK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Chatrooms" id="ths-1O-gOi"/>
+                    <navigationItem key="navigationItem" title="Chatrooms" id="ths-1O-gOi">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="b0d-Ho-cgC">
+                            <color key="tintColor" red="0.89803921568627454" green="0.30588235294117649" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="CM2-Kn-22A" kind="show" id="lye-55-3Eq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createTextField" destination="dGz-9s-tGx" id="TVB-qz-7lj"/>
@@ -92,6 +99,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCE-6P-BZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1772" y="1362"/>
+        </scene>
+        <!--Create Chatroom-->
+        <scene sceneID="BGc-u7-LaQ">
+            <objects>
+                <viewController id="CM2-Kn-22A" customClass="CreateChatroomVC" customModule="Lingo_01" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s1n-Kh-2Jw"/>
+                        <viewControllerLayoutGuide type="bottom" id="P0D-eZ-MOS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zgh-dz-Jtt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqm-4v-dyA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redMask" translatesAutoresizingMaskIntoConstraints="NO" id="TlA-3L-g8g" customClass="ProfileCircieView" customModule="Lingo_01" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="85" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Kv0-MK-E1m"/>
+                                            <constraint firstAttribute="height" constant="150" id="UEE-pN-Fto"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNj-7r-zw3">
+                                        <rect key="frame" x="270" y="180" width="20" height="20"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.30588235289999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="IrQ-lF-2j2"/>
+                                            <constraint firstAttribute="width" constant="20" id="oMI-2Q-1aN"/>
+                                        </constraints>
+                                        <state key="normal" image="edit_image"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.8980392157" green="0.30588235289999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="TlA-3L-g8g" firstAttribute="top" secondItem="Lqm-4v-dyA" secondAttribute="top" constant="85" id="1JD-di-Gmb"/>
+                                    <constraint firstItem="TlA-3L-g8g" firstAttribute="centerX" secondItem="Lqm-4v-dyA" secondAttribute="centerX" id="KLx-qm-1D1"/>
+                                    <constraint firstAttribute="height" constant="200" id="Khu-Qx-8kJ"/>
+                                    <constraint firstItem="nNj-7r-zw3" firstAttribute="top" secondItem="Lqm-4v-dyA" secondAttribute="top" constant="180" id="NLx-Z9-bBm"/>
+                                    <constraint firstItem="nNj-7r-zw3" firstAttribute="leading" secondItem="TlA-3L-g8g" secondAttribute="trailing" constant="8" id="ShQ-QP-vb1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lqm-4v-dyA" firstAttribute="leading" secondItem="zgh-dz-Jtt" secondAttribute="leading" id="PPX-lY-D3R"/>
+                            <constraint firstAttribute="trailing" secondItem="Lqm-4v-dyA" secondAttribute="trailing" id="dAZ-yd-oFe"/>
+                            <constraint firstItem="Lqm-4v-dyA" firstAttribute="top" secondItem="s1n-Kh-2Jw" secondAttribute="bottom" id="fRK-dK-EVV"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Create Chatroom" id="u6Q-SK-TH3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="mGL-37-S5v">
+                            <color key="tintColor" red="0.8980392157" green="0.30588235289999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="closeBtnPressed:" destination="CM2-Kn-22A" id="ker-tW-EMw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rnq-Lc-zyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2760.8000000000002" y="1091.6041979010495"/>
         </scene>
         <!--Chatroom-->
         <scene sceneID="vnC-sQ-WUu">
@@ -116,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Z3-0A-fNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2650" y="1363"/>
+            <point key="canvasLocation" x="2762" y="1735"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mx7-u8-yta">
@@ -143,5 +214,7 @@
     <resources>
         <image name="Chat" width="25" height="25"/>
         <image name="ChatFilled" width="25" height="25"/>
+        <image name="edit_image" width="60" height="60"/>
+        <image name="redMask" width="271" height="267"/>
     </resources>
 </document>

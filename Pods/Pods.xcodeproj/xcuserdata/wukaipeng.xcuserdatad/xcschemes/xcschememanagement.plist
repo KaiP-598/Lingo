@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +67,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>184516C050D36AF8AAE78D03F3C367FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>197C042BB39987761A638CEA0722F225</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1DE93A359FA21F91DFBE81309E851A4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>23BA9083ED0D2392A167A8AFA04427FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD2B1D9083DBF9093D4B0473E30D568F</key>
+		<key>B75ED1E3F711A329B2F290059D9FF104</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F3AD065E1F4A9BBD133103EC64B967BF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F8CE1C1132B640E2F7A563C07862BE2D</key>
+		<key>E566B866C293728A250C2209EDDF7D1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -13,6 +13,9 @@
 		4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1B1E4ECF11006BC916 /* Main.storyboard */; };
 		4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */; };
 		4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00DD201E4ECF11006BC916 /* LaunchScreen.storyboard */; };
+		4D0CAE861F5B8DD200094E0C /* CreateChatroomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CAE851F5B8DD200094E0C /* CreateChatroomVC.swift */; };
+		4D0CAE881F5BCFF900094E0C /* ProfileCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CAE871F5BCFF900094E0C /* ProfileCircleView.swift */; };
+		4D0CAE8A1F5BD38700094E0C /* ProfileCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CAE891F5BD38700094E0C /* ProfileCircleButton.swift */; };
 		4D1E9E971EF3D71600466B98 /* Chatrooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E9E951EF3D71600466B98 /* Chatrooms.storyboard */; };
 		4D1E9E9A1EF3E40E00466B98 /* ChatroomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */; };
 		4D1E9E9D1EF3E4F200466B98 /* ChatroomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */; };
@@ -65,6 +68,9 @@
 		4D00DD1E1E4ECF11006BC916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D00DD211E4ECF11006BC916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D00DD231E4ECF11006BC916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D0CAE851F5B8DD200094E0C /* CreateChatroomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChatroomVC.swift; sourceTree = "<group>"; };
+		4D0CAE871F5BCFF900094E0C /* ProfileCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCircleView.swift; sourceTree = "<group>"; };
+		4D0CAE891F5BD38700094E0C /* ProfileCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCircleButton.swift; sourceTree = "<group>"; };
 		4D1E9E961EF3D71600466B98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chatrooms.storyboard; sourceTree = "<group>"; };
 		4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomVC.swift; sourceTree = "<group>"; };
 		4D1E9E9C1EF3E4F200466B98 /* ChatroomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomCell.swift; sourceTree = "<group>"; };
@@ -189,11 +195,21 @@
 			path = Lingo_01;
 			sourceTree = "<group>";
 		};
+		4D0CAE8B1F5BD38A00094E0C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4D0CAE871F5BCFF900094E0C /* ProfileCircleView.swift */,
+				4D0CAE891F5BD38700094E0C /* ProfileCircleButton.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		4D1E9E981EF3E13400466B98 /* Chatroom */ = {
 			isa = PBXGroup;
 			children = (
 				4D1E9E991EF3E40E00466B98 /* ChatroomVC.swift */,
 				4D7BE1A71F05298900E8B3D1 /* ChatVC.swift */,
+				4D0CAE851F5B8DD200094E0C /* CreateChatroomVC.swift */,
 			);
 			name = Chatroom;
 			sourceTree = "<group>";
@@ -219,6 +235,8 @@
 		4D2E459A1E4ED2400048E2DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4D0CAE8B1F5BD38A00094E0C /* Profile */,
+				4D6B63CA1F52F6C9003BC026 /* Post Feed */,
 				4D1E9E9B1EF3E4D400466B98 /* Chatroom */,
 				4DA95BA01EEFE45000A8C4C8 /* CommentSection */,
 				4DE099EA1E84015400FFC5E5 /* TabBarView */,
@@ -228,7 +246,6 @@
 				4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */,
 				4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */,
 				4D71B9FD1E60276A00511559 /* CircieView.swift */,
-				4D71B9FF1E603C0200511559 /* PostCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -274,6 +291,14 @@
 				4DA0F2711ED819EF00015185 /* TermsVC.swift */,
 			);
 			name = SignIn;
+			sourceTree = "<group>";
+		};
+		4D6B63CA1F52F6C9003BC026 /* Post Feed */ = {
+			isa = PBXGroup;
+			children = (
+				4D71B9FF1E603C0200511559 /* PostCell.swift */,
+			);
+			name = "Post Feed";
 			sourceTree = "<group>";
 		};
 		4D71BA011E60564C00511559 /* Services */ = {
@@ -558,6 +583,7 @@
 				4DE099E51E7FFAA100FFC5E5 /* GFQuery.m in Sources */,
 				4D00DD181E4ECF11006BC916 /* AppDelegate.swift in Sources */,
 				4DE099EC1E84017D00FFC5E5 /* TabBarHeightView.swift in Sources */,
+				4D0CAE861F5B8DD200094E0C /* CreateChatroomVC.swift in Sources */,
 				4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */,
 				4D71BA031E60566500511559 /* DataService.swift in Sources */,
 				4DA0F2701ED7F3BC00015185 /* ReportVC.swift in Sources */,
@@ -570,6 +596,7 @@
 				4D2E459F1E4EEAA30048E2DD /* Constants.swift in Sources */,
 				4DE099E31E7FFAA100FFC5E5 /* GFGeoHash.m in Sources */,
 				4DE099E41E7FFAA100FFC5E5 /* GFGeoHashQuery.m in Sources */,
+				4D0CAE881F5BCFF900094E0C /* ProfileCircleView.swift in Sources */,
 				4D8B43311E76845C0051262C /* UserAccountDetailVC.swift in Sources */,
 				4D1E9E9A1EF3E40E00466B98 /* ChatroomVC.swift in Sources */,
 				4D8B432F1E764A950051262C /* UserNameVC.swift in Sources */,
@@ -582,6 +609,7 @@
 				4D8B36321EF011AD0040263F /* Comment.swift in Sources */,
 				4D8B36341EF2B3A70040263F /* stringHelper.swift in Sources */,
 				4DA95BA21EEFE48500A8C4C8 /* CommentCell.swift in Sources */,
+				4D0CAE8A1F5BD38700094E0C /* ProfileCircleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

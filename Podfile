@@ -15,5 +15,7 @@ target 'Lingo_01' do
   pod 'Kingfisher', '~> 3.0'
   pod 'SwipeCellKit'
   pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'develop'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'SCLAlertView'
 
 end
