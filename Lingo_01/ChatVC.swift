@@ -12,6 +12,7 @@ import JSQMessagesViewController
 import SwiftKeychainWrapper
 import Photos
 import Kingfisher
+import ChameleonFramework
 
 class ChatVC: JSQMessagesViewController {
 
