@@ -25,6 +25,7 @@
 		4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */; };
 		4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */; };
 		4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */; };
+		4D5EA5101F5C493200EE2AEB /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EA50F1F5C493200EE2AEB /* SubmitButton.swift */; };
 		4D6B63C51F49A2A8003BC026 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D6B63C41F49A2A8003BC026 /* GoogleService-Info.plist */; };
 		4D71B9FC1E5F097800511559 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FB1E5F097800511559 /* FeedVC.swift */; };
 		4D71B9FE1E60276A00511559 /* CircieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B9FD1E60276A00511559 /* CircieView.swift */; };
@@ -80,6 +81,7 @@
 		4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = ../RoundBtn.swift; sourceTree = "<group>"; };
 		4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		4D5EA50F1F5C493200EE2AEB /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		4D6B63C41F49A2A8003BC026 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D71B9FA1E55DA2900511559 /* Lingo_01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lingo_01.entitlements; sourceTree = "<group>"; };
 		4D71B9FB1E5F097800511559 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */,
 				4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */,
 				4D71B9FD1E60276A00511559 /* CircieView.swift */,
+				4D5EA50F1F5C493200EE2AEB /* SubmitButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				4DE099EC1E84017D00FFC5E5 /* TabBarHeightView.swift in Sources */,
 				4D0CAE861F5B8DD200094E0C /* CreateChatroomVC.swift in Sources */,
 				4D7C8B091E8D31FC00D85B13 /* PostDownloadHelper.swift in Sources */,
+				4D5EA5101F5C493200EE2AEB /* SubmitButton.swift in Sources */,
 				4D71BA031E60566500511559 /* DataService.swift in Sources */,
 				4DA0F2701ED7F3BC00015185 /* ReportVC.swift in Sources */,
 				4D7BE1A31EF8BC1900E8B3D1 /* ChatroomDownloadHelper.swift in Sources */,
