@@ -119,6 +119,9 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 chatVC.chatroom = chatroom
                 chatVC.isAnonymous = isAnonymous
             }
+        } else if (segue.identifier == "toCreateChatroom"){
+            let createChatroomVC = segue.destination as! CreateChatroomVC
+            createChatroomVC.currentUserLocation = currentUserLocation
         }
     }
     

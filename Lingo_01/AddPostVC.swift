@@ -96,7 +96,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             return
         }
         
-        if let imgData = UIImageJPEGRepresentation(img, 0.2){
+        if let imgData = UIImageJPEGRepresentation(img, 0.5){
             
             let imgUid = UUID().uuidString
             let metadata = FIRStorageMetadata()

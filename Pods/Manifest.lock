@@ -55,6 +55,7 @@ PODS:
   - JSQMessagesViewController (7.3.4)
   - Kingfisher (3.6.2)
   - SCLAlertView (0.7.0)
+  - SkyFloatingLabelTextField (3.1.0)
   - SwiftKeychainWrapper (3.0.1)
   - SwipeCellKit (1.8.0)
 
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - JSQMessagesViewController (from `https://github.com/jessesquires/JSQMessagesViewController.git`, branch `develop`)
   - Kingfisher (~> 3.0)
   - SCLAlertView
+  - SkyFloatingLabelTextField (~> 3.0)
   - SwiftKeychainWrapper
   - SwipeCellKit
 
@@ -103,9 +105,10 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: c11b9e77372ab72c45c67311f6da7342e32df1e8
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SkyFloatingLabelTextField: 26a92ad407044dd5a7c3e4e348738ff0991514fe
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
 
-PODFILE CHECKSUM: f963a793c02a8534fb1695940b2ba9a5e45fb88c
+PODFILE CHECKSUM: 42fc073c670892dce41e812cfad25ca5e852c3ef
 
 COCOAPODS: 1.0.1

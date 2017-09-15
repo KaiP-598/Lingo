@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3294B840196272A477EFDFF3B60235F9'
-               BlueprintName = 'SCLAlertView'
+               BlueprintIdentifier = '9BA1351AA4C4CBB4C09E17E3F834C018'
+               BlueprintName = 'SkyFloatingLabelTextField'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SCLAlertView.framework'>
+               BuildableName = 'SkyFloatingLabelTextField.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
