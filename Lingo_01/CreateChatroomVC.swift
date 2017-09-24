@@ -53,9 +53,9 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
     
     func createChatroom(url: String) {
         let timeInt = Int(Date().timeIntervalSince1970)
-        var isPublic = true
+        var isPublic = "true"
         if chatroomPasswordText.text != "" {
-            isPublic = false
+            isPublic = "false"
         }
         let chatroom: Dictionary<String, AnyObject> = [
             "chatroomName": chatroomText.text! as AnyObject,

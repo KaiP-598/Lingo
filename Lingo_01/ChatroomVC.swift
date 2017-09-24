@@ -33,6 +33,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         super.viewDidLoad()
        // setupColor()
         setupUserLocation()
+        self.tableView.backgroundColor = UIColor.flatWhite
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -75,12 +76,8 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatroom = chatrooms[indexPath.row]
-        print ("chatroom added3\(chatroom.chatroomName)")
         if let cell = tableView.dequeueReusableCell(withIdentifier: "chatroomCell") as? ChatroomCell{
-            //cell.delegate = self
-            //cell.configureCell(post: post, userLocation: currentUserLocation)
-            print ("chatroom addedd\(chatroom.chatroomName)")
-            cell.textLabel?.text = chatroom.chatroomName
+            cell.configureCells(chatroom: chatroom, location: currentUserLocation)
             return cell
             
         } else {
@@ -89,7 +86,43 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: false)
         let chatroom = chatrooms[indexPath.row]
+        if chatroom.isPublic == "true"{
+            joinChatroom(chatroom: chatroom)
+        } else {
+            let appearance = SCLAlertView.SCLAppearance(
+                kCircleIconHeight: 55.0,
+                showCloseButton: false,
+                showCircularIcon: true
+                )
+            let alertViewIcon = UIImage(named: "DefaultMask")
+            let alert = SCLAlertView(appearance: appearance)
+            let txt = alert.addTextField("Enter password")
+            let submitButton = alert.addButton("Submit", action: {
+                if txt.text == chatroom.password {
+                    self.joinChatroom(chatroom: chatroom)
+                } else {
+                    let appearance = SCLAlertView.SCLAppearance(
+                        showCloseButton: false
+                    )
+                    let alertView = SCLAlertView(appearance: appearance)
+                    alertView.showWarning("Wrong password", subTitle: "", duration: 1.7)
+                }
+            })
+            
+            let cancelButton = alert.addButton("Cancel", action: {
+                alert.dismiss(animated: true, completion: nil)
+            })
+            
+            alert.showInfo("Enter password", subTitle: "This is a private chatroom",circleIconImage: alertViewIcon)
+            submitButton.tintColor = UIColor.flatRed
+            submitButton.backgroundColor = UIColor.flatRed
+            cancelButton.backgroundColor = UIColor.flatRed
+        }
+    }
+    
+    func joinChatroom(chatroom: Chatroom){
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
             
@@ -106,7 +139,6 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         actionSheet.addAction(anonymousAction)
         present(actionSheet, animated: true, completion: nil)
-        
     }
     
     
