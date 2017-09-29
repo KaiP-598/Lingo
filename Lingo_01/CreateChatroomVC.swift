@@ -13,7 +13,7 @@ import SCLAlertView
 import Firebase
 import SwiftKeychainWrapper
 
-class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var chatroomText: SkyFloatingLabelTextField!    
     @IBOutlet weak var chatroomPasswordText: SkyFloatingLabelTextField!
@@ -31,6 +31,9 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
         super.viewDidLoad()
        // self.navigationItem.hidesBackButton = true
         //self.chatroomText.textAlignment = .center
+        self.chatroomText.delegate = self
+        self.chatroomPasswordText.delegate = self
+        self.hideKeyboard()
         initImagePicker()
         setupGeoFire()
     }
@@ -49,6 +52,10 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
             chatroomImage.image = image
         }
         imagePicker.dismiss(animated:true, completion: nil)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func createChatroom(url: String) {

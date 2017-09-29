@@ -33,7 +33,7 @@ class ChatroomVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         super.viewDidLoad()
        // setupColor()
         setupUserLocation()
-        self.tableView.backgroundColor = UIColor.flatWhite
+        self.tableView.backgroundColor = UIColor.init(hexString: "#F6F6F6")
         
         tableView.delegate = self
         tableView.dataSource = self
