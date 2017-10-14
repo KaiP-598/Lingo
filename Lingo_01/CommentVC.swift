@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 
 class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
@@ -205,9 +206,21 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     func keyboardWillShow(sender: NSNotification) {
         //self.view.frame.origin.y = -150  Move view 150 points upward
-        if let keyboardSize = (sender.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        
+        if let keyboardSize = (sender.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
+                print (keyboardSize.height)
+                //self.view.frame.origin.y -= keyboardSize.height
+                let duration:TimeInterval = (sender.userInfo![UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+                let animationCurveRawNSN = sender.userInfo![UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+                let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+                let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+                self.bottomConstraint?.constant = keyboardSize.height
+                UIView.animate(withDuration: duration,
+                               delay: TimeInterval(0),
+                               options: animationCurve,
+                               animations: { self.view.layoutIfNeeded() },
+                               completion: nil)
             }
         }
     }
@@ -215,9 +228,11 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     func keyboardWillHide(sender: NSNotification) {
         if let keyboardSize = (sender.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
+               // self.view.frame.origin.y += keyboardSize.height
+            
             }
         }
+        self.bottomConstraint?.constant = 0
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

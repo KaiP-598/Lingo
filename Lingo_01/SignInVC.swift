@@ -11,11 +11,13 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
+import SkyFloatingLabelTextField
 
 class SignInVC: UIViewController {
 
-    @IBOutlet weak var emailField: FancyField!
-    @IBOutlet weak var pwdField: FancyField!
+    @IBOutlet weak var emailField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var pwdField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var facebookBtn: UIButton!
     
     fileprivate enum loginType{
         case Facebook
@@ -25,8 +27,8 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //FIRAuth.auth()?.sendPasswordReset(withEmail: "kaipeng.tech@gmail.com", completion: nil)
+        self.hideKeyboard()
+        self.setupTextfields()
     }
     
     
@@ -39,6 +41,15 @@ class SignInVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupTextfields(){
+        self.emailField.iconFont = UIFont(name: "FontAwesome", size: 15)
+        self.emailField.iconText = "\u{f0e0}"
+        self.pwdField.iconFont = UIFont(name: "FontAwesome", size: 15)
+        self.pwdField.iconText = "\u{f023}"
+        self.facebookBtn.setTitle("  \u{f09a}  Login With Facebook", for: .normal)
+        
     }
 
     @IBAction func facebookBtnTapped(_ sender: Any) {

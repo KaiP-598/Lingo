@@ -18,6 +18,6 @@ target 'Lingo_01' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'SCLAlertView'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
-  pod 'NVActivityIndicatorView'
+  pod 'NVActivityIndicatorView', '~> 4.0.0'
 
 end

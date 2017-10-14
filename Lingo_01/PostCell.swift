@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 protocol ShowAlertcontroller:class {
     func showActionsheet(postKey: String, userID: String)
@@ -37,12 +38,13 @@ class PostCell: UITableViewCell {
     var postRef: FIRDatabaseReference!
     var geoFirePost: GeoFire!
     var actionSheet: UIAlertController!
+    var currentUser : String!
     weak var delegate: ShowAlertcontroller? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupTapGestures()
-        
+        currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)
         //setupActionSheet()
     }
     
@@ -75,46 +77,19 @@ class PostCell: UITableViewCell {
         let numDays = PostLocationDateKey.manager.getCurrentDateKey()
         geoFirePost = GeoFire(firebaseRef: DataService.ds.REF_POSTS_LOCATIONS.child(numDays))
         
+        self.usernameLbl.text = post.authorName
         self.caption.text = post.caption
         self.likeLbl.text = "\(post.likes)"
         self.caption.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.timeLbl.text = timeStampHelper.timeManager.getTime(timeStamp: Int(post.timeStamp!)!)
-        //self.commentImg.isHidden = true
         self.shareImg.isHidden = true
         
         
         if (post.authorID != nil && post.isAnonymous == "false") {
-            print ("xPost: \(post.caption)")
-            userImageRef = DataService.ds.REF_USERS.child(post.authorID!).child("profile").child("profileImageUrl")
-            userNameRef = DataService.ds.REF_USERS.child(post.authorID!).child("profile").child("username")
-            
-            //GET USERNAME FROM FIREBASE
-            userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                let userName = snapshot.value as? String ?? ""
-                self.usernameLbl.text = userName
-            })
-            
-            //GET IMAGE FROM FIREBASE
-            userImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                let profileImageUrl = snapshot.value as? String ?? ""
-                let url = URL(string: "\(profileImageUrl)")!
+            if let userProfileImageUrl = post.profileImageUrl {
+                let url = URL(string: userProfileImageUrl)
                 self.profileImg.kf.setImage(with: url)
-//                let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
-//                ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
-//                    if error != nil {
-//                        print ("Log: Unable to download profile image")
-//                    } else{
-//                        print ("Log: Profile image downloaded successfully")
-//                        if let imgData = data {
-//                            if let userImage = UIImage(data: imgData){
-//                                self.profileImg.image = userImage
-//                                FeedVC.imageCache.setObject(userImage, forKey: profileImageUrl as NSString)
-//                            }
-//                        }
-//                    }
-//                })
-            })
-            
+            }
         } else{
             self.profileImg.image = UIImage(named: "DefaultMask")
             self.usernameLbl.text = "Anonymous"
@@ -171,29 +146,84 @@ class PostCell: UITableViewCell {
         }
         
         //observe single event for the likes
-        likesRef.observeSingleEvent(of: .value, with: {(snapshot) in
-            if let _ = snapshot.value as? NSNull {
-                self.likeImg.image = UIImage(named: "Hearts_Empty")
-            } else {
-                self.likeImg.image = UIImage(named: "Hearts_Filled")
-            }
+//        likesRef.observeSingleEvent(of: .value, with: {(snapshot) in
+//            if let _ = snapshot.value as? NSNull {
+//                self.likeImg.image = UIImage(named: "Heart-Gray")
+//            } else {
+//                self.likeImg.image = UIImage(named: "Heart-Red")
+//            }
+//
+//        })
         
-        })
+        
+        if let likesByDictionary = post.likesByDict{
+            if let val = likesByDictionary[currentUser!] as? String{
+                if val == "true"{
+                    self.likeImg.image = UIImage(named: "Heart-Red")
+                } else {
+                    self.likeImg.image = UIImage(named: "Heart-Gray")
+                }
+            }
+        } else {
+            self.likeImg.image = UIImage(named: "Heart-Gray")
+        }
+        
     }
     
     func likeTapped(_ sender: UITapGestureRecognizer){
         likesRef.observeSingleEvent(of: .value, with: {(snapshot) in
             if let _ = snapshot.value as? NSNull {
-                self.likeImg.image = UIImage(named: "Hearts_Filled")
-                self.adjustLike(true)
+              //  self.likeImg.image = UIImage(named: "Heart-Red")
+               // self.adjustLike(true)
                 self.likesRef.setValue(true)
             } else {
-                self.likeImg.image = UIImage(named: "Hearts_Empty")
-                self.adjustLike(false)
+              //  self.likeImg.image = UIImage(named: "Heart-Gray")
+               // self.adjustLike(false)
                 self.likesRef.removeValue()
             }
             
         })
+
+        if var likesByDictionary = post.likesByDict{
+            if let val = likesByDictionary[currentUser!] as? String{
+                var likesByDict : Dictionary<String, AnyObject> = [
+                    "\(currentUser!)" : "false" as AnyObject
+                ]
+                if val == "true" {
+                    self.likeImg.image = UIImage(named: "Heart-Gray")
+                    self.adjustLike(false)
+                    likesByDict[currentUser!] = "false" as AnyObject
+                    likesByDictionary[currentUser!] = "false" as AnyObject
+                    post.likesByDict = likesByDictionary
+                } else {
+                    self.likeImg.image = UIImage(named: "Heart-Red")
+                    self.adjustLike(true)
+                    likesByDict[currentUser!] = "true" as AnyObject
+                    likesByDictionary[currentUser!] = "true" as AnyObject
+                    post.likesByDict = likesByDictionary
+                }
+                postRef.child("likesBy").updateChildValues(likesByDict)
+            }
+            else {
+                let likesByDict : Dictionary<String, AnyObject> = [
+                    "\(currentUser!)" : "true" as AnyObject
+                ]
+                self.likeImg.image = UIImage(named: "Heart-Red")
+                self.adjustLike(true)
+                likesByDictionary[currentUser!] = "true" as AnyObject
+                post.likesByDict = likesByDictionary
+                postRef.child("likesBy").updateChildValues(likesByDict)
+            }
+            
+        } else {
+            let likesByDict : Dictionary<String, AnyObject> = [
+                "\(currentUser!)" : "true" as AnyObject
+            ]
+            self.likeImg.image = UIImage(named: "Heart-Red")
+            self.adjustLike(true)
+            post.likesByDict = likesByDict
+            postRef.child("likesBy").updateChildValues(likesByDict)
+        }
     }
     
     func presentAlertcontroller(){

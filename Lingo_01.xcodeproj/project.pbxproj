@@ -25,6 +25,8 @@
 		4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */; };
 		4D2E45A41E4EEDDF0048E2DD /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */; };
 		4D2E45A61E4EEEB30048E2DD /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */; };
+		4D3DFC0B1F80A84400121B35 /* PostProfileImageCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DFC0A1F80A84400121B35 /* PostProfileImageCircleView.swift */; };
+		4D3DFC0E1F82E38800121B35 /* fontawesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D3DFC0D1F82E2A900121B35 /* fontawesome.ttf */; };
 		4D5EA5101F5C493200EE2AEB /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EA50F1F5C493200EE2AEB /* SubmitButton.swift */; };
 		4D5EA5121F6FFC5A00EE2AEB /* TableviewCellShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EA5111F6FFC5A00EE2AEB /* TableviewCellShadow.swift */; };
 		4D6B420E1F7E2C04001F1328 /* ViewcontrollerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6B420D1F7E2C04001F1328 /* ViewcontrollerExtension.swift */; };
@@ -84,6 +86,8 @@
 		4D2E45A11E4EECB30048E2DD /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = ../RoundBtn.swift; sourceTree = "<group>"; };
 		4D2E45A31E4EEDDF0048E2DD /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		4D2E45A51E4EEEB30048E2DD /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		4D3DFC0A1F80A84400121B35 /* PostProfileImageCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProfileImageCircleView.swift; sourceTree = "<group>"; };
+		4D3DFC0D1F82E2A900121B35 /* fontawesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = fontawesome.ttf; path = ../../../../../Downloads/fontawesome.ttf; sourceTree = "<group>"; };
 		4D5EA50F1F5C493200EE2AEB /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		4D5EA5111F6FFC5A00EE2AEB /* TableviewCellShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableviewCellShadow.swift; sourceTree = "<group>"; };
 		4D6B420D1F7E2C04001F1328 /* ViewcontrollerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewcontrollerExtension.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				4DE099ED1E863BC500FFC5E5 /* claytonLocation.gpx */,
 				4D7C8B0C1E99DC5C00D85B13 /* monashLocation.gpx */,
 				4D7C8B0D1EA241BB00D85B13 /* waverleyRoadLocation.gpx */,
+				4D3DFC0D1F82E2A900121B35 /* fontawesome.ttf */,
 			);
 			path = Lingo_01;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				4D71B9FF1E603C0200511559 /* PostCell.swift */,
+				4D3DFC0A1F80A84400121B35 /* PostProfileImageCircleView.swift */,
 			);
 			name = "Post Feed";
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				4D00DD221E4ECF11006BC916 /* LaunchScreen.storyboard in Resources */,
 				4D00DD1F1E4ECF11006BC916 /* Assets.xcassets in Resources */,
 				4D6B63C51F49A2A8003BC026 /* GoogleService-Info.plist in Resources */,
+				4D3DFC0E1F82E38800121B35 /* fontawesome.ttf in Resources */,
 				4D00DD1D1E4ECF11006BC916 /* Main.storyboard in Resources */,
 				4D1E9E971EF3D71600466B98 /* Chatrooms.storyboard in Resources */,
 			);
@@ -593,6 +600,7 @@
 				4DB4A6BC1F22E94C00CFAEE1 /* FindPasswordVC.swift in Sources */,
 				4D00DD1A1E4ECF11006BC916 /* SignInVC.swift in Sources */,
 				4DC891101EDC047100DBA361 /* TermsAndConditionsConstant.swift in Sources */,
+				4D3DFC0B1F80A84400121B35 /* PostProfileImageCircleView.swift in Sources */,
 				4D7C8B0B1E99D4A600D85B13 /* timeStampHelper.swift in Sources */,
 				4D2E45A21E4EECB30048E2DD /* RoundBtn.swift in Sources */,
 				4D1E9E9F1EF3E50800466B98 /* Chatroom.swift in Sources */,
