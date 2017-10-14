@@ -11,11 +11,13 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
+import SkyFloatingLabelTextField
 
 class SignInVC: UIViewController {
 
-    @IBOutlet weak var emailField: FancyField!
-    @IBOutlet weak var pwdField: FancyField!
+    @IBOutlet weak var emailField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var pwdField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var facebookBtn: UIButton!
     
     fileprivate enum loginType{
         case Facebook
@@ -25,8 +27,8 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //FIRAuth.auth()?.sendPasswordReset(withEmail: "kaipeng.tech@gmail.com", completion: nil)
+        self.hideKeyboard()
+        self.setupTextfields()
     }
     
     
@@ -39,6 +41,15 @@ class SignInVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupTextfields(){
+        self.emailField.iconFont = UIFont(name: "FontAwesome", size: 15)
+        self.emailField.iconText = "\u{f0e0}"
+        self.pwdField.iconFont = UIFont(name: "FontAwesome", size: 15)
+        self.pwdField.iconText = "\u{f023}"
+        self.facebookBtn.setTitle("  \u{f09a}  Login With Facebook", for: .normal)
+        
     }
 
     @IBAction func facebookBtnTapped(_ sender: Any) {
@@ -104,7 +115,7 @@ class SignInVC: UIViewController {
     }
     
     fileprivate func createAgreementAlert(type: loginType, userID: String, userData:Dictionary<String,Any>){
-        let alert = UIAlertController(title: "Terms and Conditions", message: termsAndConditions, preferredStyle: .alert)
+       // let alert = UIAlertController(title: "Terms and Conditions", message: termsAndConditions, preferredStyle: .alert)
         
 //        let margin:CGFloat = 8.0
 //        //let rect = CGRect(margin, margin, alert.view.bounds.size.width - margin * 4.0, 100.0)
@@ -118,32 +129,57 @@ class SignInVC: UIViewController {
 //        alert.view.addSubview(customView)
         
         //Cancel button
-        let cancelBtn = UIAlertAction(title: "Cancel", style: .destructive, handler: {(action) -> Void in})
+        //let cancelBtn = UIAlertAction(title: "Cancel", style: .destructive, handler: {(action) -> Void in})
         //Agree button
-        let agreeBtn = UIAlertAction(title: "Agree", style: .default) { (action) in
+//        let agreeBtn = UIAlertAction(title: "Agree", style: .default) { (action) in
+//            
+//            if type == .FirebaseSignUp{
+//                let email = self.emailField.text!
+//                let pwd = self.pwdField.text!
+//                
+//                FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
+//                    if error != nil {
+//                        print ("JESS: Unable to authenticate with Firebase using email")
+//                    } else{
+//                        print ("JESS: Successfully authenticated with Firebase")
+//                        if let user = user {
+//                            let userData = ["provider":user.providerID, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
+//                            self.completeSignIn(user.uid, userData: userData)
+//                        }
+//                    }
+//                })
+//            }else {
+//                self.completeSignIn(userID, userData: userData)
+//            }
+//        }
+        
+        if type == .FirebaseSignUp{
+            let email = self.emailField.text!
+            let pwd = self.pwdField.text!
             
-            if type == .FirebaseSignUp{
-                let email = self.emailField.text!
-                let pwd = self.pwdField.text!
-                
-                FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
-                    if error != nil {
-                        print ("JESS: Unable to authenticate with Firebase using email")
-                    } else{
-                        print ("JESS: Successfully authenticated with Firebase")
-                        if let user = user {
-                            let userData = ["provider":user.providerID, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
-                            self.completeSignIn(user.uid, userData: userData)
-                        }
+            FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
+                if error != nil {
+                    print ("JESS: Unable to authenticate with Firebase using email")
+                   // print ("\(error)")
+                } else{
+                    print ("JESS: Successfully authenticated with Firebase")
+                    if let user = user {
+                        let userData = ["provider":user.providerID, "profile":["username": "Anonymous", "profileImageUrl": "\(MASK_URL)"]] as [String : Any]
+                        self.completeSignIn(user.uid, userData: userData)
                     }
-                })
-            }else {
-                self.completeSignIn(userID, userData: userData)
-            }
+                }
+            })
+            
+            self.emailField.text = ""
+            self.pwdField.text = ""
+        }else {
+            self.completeSignIn(userID, userData: userData)
+            self.emailField.text = ""
+            self.pwdField.text = ""
         }
-        alert.addAction(agreeBtn)
-        alert.addAction(cancelBtn)
-        present(alert, animated:true, completion:nil)
+        //alert.addAction(agreeBtn)
+        //alert.addAction(cancelBtn)
+        //present(alert, animated:true, completion:nil)
     }
     
     

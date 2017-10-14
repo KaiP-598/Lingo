@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import NVActivityIndicatorView
 
-class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NVActivityIndicatorViewable {
 
     @IBOutlet weak var profileImage: CircieView!
     
@@ -30,12 +31,19 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     func obtainProfileImage(){
+        let defaults = UserDefaults.standard
+        if let imageUrlString = defaults.string(forKey: "profileImageUrl"){
+            let url = URL(string: "\(imageUrlString)")!
+            self.profileImage.kf.setImage(with: url)
+        }
+        
         //GET IMAGE FROM FIREBASE
         profileImageRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let profileImageUrl = snapshot.value as? String ?? ""
             let url = URL(string: "\(profileImageUrl)")!
             self.profileImage.kf.setImage(with: url)
+            defaults.set(profileImageUrl, forKey: "profileImageUrl")
 //            let ref = FIRStorage.storage().reference(forURL: profileImageUrl)
 //            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
 //                if error != nil {
@@ -69,8 +77,9 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     @IBAction func updateBtnTapped(_ sender: Any) {
-        
+        startAnimating(type: NVActivityIndicatorType.ballClipRotatePulse, color: UIColor.flatWatermelon)
         guard let img = profileImage.image else {
+            self.stopAnimating()
             print ("Log: Error with the user profile image")
             return
         }
@@ -85,6 +94,7 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         DataService.ds.REF_USER_PROFILE_IMAGES.child(imgUid).put(imgData, metadata: metadata) {(metaData, error) in
             
             if error != nil {
+                self.stopAnimating()
                 print ("Log: Unable to upload image to Firebase storage")
             } else{
                 
@@ -102,6 +112,7 @@ class UserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     func postToFirebase(_ imgUrl: String){
         profileImageRef.setValue(imgUrl)
+        self.stopAnimating()
         print ("Log: Profile Image successfully updated")
         
     }

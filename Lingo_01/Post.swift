@@ -16,8 +16,11 @@ class Post {
     fileprivate var _likes: Int!
     fileprivate var _postKey: String!
     fileprivate var _authorID: String!
+    fileprivate var _authorName: String!
+    fileprivate var _profileImageUrl: String!
     fileprivate var _timeStamp: String!
     fileprivate var _isAnonymous: String!
+    fileprivate var _likesByDict: Dictionary<String, AnyObject>!
     fileprivate var _postRef: FIRDatabaseReference!
     
     var caption: String {
@@ -40,12 +43,30 @@ class Post {
         return _authorID
     }
     
+    var authorName: String? {
+        return _authorName
+    }
+    
+    var profileImageUrl: String? {
+        return _profileImageUrl
+    }
+    
     var timeStamp: String? {
         return _timeStamp
     }
     
     var isAnonymous: String? {
         return _isAnonymous
+    }
+    
+    var likesByDict: Dictionary<String, AnyObject>? {
+        get{
+            return _likesByDict
+        }
+        set{
+            _likesByDict = newValue
+        }
+        
     }
     
     init(caption: String, imageUrl: String, likes: Int, authorID: String, timeStamp: String, isAnonymous: String){
@@ -75,11 +96,25 @@ class Post {
         if let authorID = postData["userID"] as? String {
             self._authorID = authorID
         }
+        
+        if let authorName = postData["userName"] as? String {
+            self._authorName = authorName
+        }
+        
+        if let profileImageUrl = postData["userProfileImageUrl"] as? String {
+            self._profileImageUrl = profileImageUrl
+        }
+        
         if let timeStamp = postData["timeStamp"] as? String{
             self._timeStamp = timeStamp
         }
+        
         if let isAnonymous = postData["isAnonymous"] as? String{
             self._isAnonymous = isAnonymous
+        }
+        
+        if let likesByDict = postData["likesBy"] as? Dictionary<String, AnyObject>{
+            self._likesByDict = likesByDict
         }
         
         _postRef = DataService.ds.REF_POSTS.child(_postKey)

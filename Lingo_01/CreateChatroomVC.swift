@@ -12,8 +12,9 @@ import SkyFloatingLabelTextField
 import SCLAlertView
 import Firebase
 import SwiftKeychainWrapper
+import NVActivityIndicatorView
 
-class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, NVActivityIndicatorViewable {
 
     @IBOutlet weak var chatroomText: SkyFloatingLabelTextField!    
     @IBOutlet weak var chatroomPasswordText: SkyFloatingLabelTextField!
@@ -31,6 +32,9 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
         super.viewDidLoad()
        // self.navigationItem.hidesBackButton = true
         //self.chatroomText.textAlignment = .center
+        self.chatroomText.delegate = self
+        self.chatroomPasswordText.delegate = self
+        self.hideKeyboard()
         initImagePicker()
         setupGeoFire()
     }
@@ -38,6 +42,7 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
     func initImagePicker(){
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+       // imagePicker.allowsEditing = true
     }
     
     func setupGeoFire(){
@@ -50,12 +55,16 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
         }
         imagePicker.dismiss(animated:true, completion: nil)
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     func createChatroom(url: String) {
         let timeInt = Int(Date().timeIntervalSince1970)
-        var isPublic = true
+        var isPublic = "true"
         if chatroomPasswordText.text != "" {
-            isPublic = false
+            isPublic = "false"
         }
         let chatroom: Dictionary<String, AnyObject> = [
             "chatroomName": chatroomText.text! as AnyObject,
@@ -76,11 +85,12 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
                 print ("post location updated successfully")
             }
         }
-        
+        self.stopAnimating()
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func createButtonPressed(_ sender: Any) {
+        startAnimating(type: NVActivityIndicatorType.ballClipRotatePulse, color: UIColor.flatWatermelon)
         guard let chatroomName = chatroomText.text, chatroomName != "" else{
             print ("Log: Caption must be entered")
             let appearance = SCLAlertView.SCLAppearance(
@@ -89,6 +99,7 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
             )
             let alertView = SCLAlertView(appearance: appearance)
             alertView.showWarning("", subTitle: "We need a name for the chatroom", duration: 1.5)
+            self.stopAnimating()
             return
         }
         
@@ -107,6 +118,7 @@ class CreateChatroomVC: UIViewController, UINavigationControllerDelegate, UIImag
                 
                 if error != nil {
                     print ("Log: Unable to upload image to Firebase storage")
+                    self.stopAnimating()
                 } else {
                     print ("Log: Successfully uploaded image to Firebase storage")
                     let downloadURL = metaData?.downloadURL()?.absoluteString

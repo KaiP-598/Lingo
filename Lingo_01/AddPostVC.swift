@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import NVActivityIndicatorView
+import SCLAlertView
 
-class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, NVActivityIndicatorViewable {
 
     @IBOutlet weak var addedImage: UIImageView!
     @IBOutlet weak var captionField: UITextField!
@@ -52,13 +54,16 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         imagePicker.dismiss(animated:true, completion: nil)
     }
     
-    func postToFirebase(_ imgUrl: String, isAnonymous: String){
+    func postToFirebase(_ imgUrl: String, isAnonymous: String, userName: String, profileImageUrl: String){
         let timeInt = Int(Date().timeIntervalSince1970)
+        
         let post: Dictionary<String, AnyObject> = [
             "caption": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
             "likes": 0 as AnyObject,
             "userID": currentUser.key as AnyObject,
+            "userName": userName as AnyObject,
+            "userProfileImageUrl": profileImageUrl as AnyObject,
             "timeStamp": "\(timeInt)" as AnyObject,
             "isAnonymous": isAnonymous as AnyObject
         ]
@@ -67,6 +72,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         firebasePost.setValue(post)
         geoFirePost.setLocation(currentUserLocation, forKey: firebasePost.key) { (error) in
             if error != nil{
+                self.stopAnimating()
                 print ("unable to update location: \(error)")
             } else {
                 print ("post location updated successfully")
@@ -74,6 +80,7 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         }
         geoFirePostNextDay.setLocation(currentUserLocation, forKey: firebasePost.key) { (error) in
             if error != nil{
+               self.stopAnimating()
                 print ("unable to update location: \(error)")
             } else {
                 print ("post location updated successfully")
@@ -82,16 +89,31 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         captionField.text = ""
         imageSelected = false
         addedImage.image = UIImage(named: "add-image")
-        
+        stopAnimating()
         self.dismiss(animated: true, completion: nil)
     }
     
     func sharePost(isAnonymous: String){
+        startAnimating(type: NVActivityIndicatorType.ballClipRotatePulse, color: UIColor.flatWatermelon)
         guard let caption = captionField.text, caption != "" else{
             print ("Log: Caption must be entered")
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false,
+                titleColor: UIColor.flatRedDark
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.showWarning("", subTitle: "The caption cannot be empty", duration: 1.5)
+            stopAnimating()
             return
         }
         guard let img = addedImage.image, imageSelected == true else {
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false,
+                titleColor: UIColor.flatRedDark
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.showWarning("", subTitle: "We need an image for the post", duration: 1.5)
+            stopAnimating()
             print ("Log: An image must be selected")
             return
         }
@@ -105,12 +127,20 @@ class AddPostVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             DataService.ds.REF_POST_IMAGES.child(imgUid).put(imgData, metadata: metadata) {(metaData, error) in
                 
                 if error != nil {
+                    self.stopAnimating()
                     print ("Log: Unable to upload image to Firebase storage")
                 } else {
                     print ("Log: Successfully uploaded image to Firebase storage")
                     let downloadURL = metaData?.downloadURL()?.absoluteString
                     if let url = downloadURL{
-                        self.postToFirebase(url, isAnonymous: isAnonymous)
+                        self.currentUser.child("profile").child("username").observeSingleEvent(of: .value, with: { (snapshot) in
+                            let userName = snapshot.value as? String ?? ""
+                            self.currentUser.child("profile").child("profileImageUrl").observeSingleEvent(of: .value, with: { (snapshot) in
+                                    let profileImageUrl = snapshot.value as? String ?? ""
+                                    self.postToFirebase(url, isAnonymous: isAnonymous, userName: userName, profileImageUrl: profileImageUrl)
+                            })
+                        })
+                        
                     }
                     
                 }

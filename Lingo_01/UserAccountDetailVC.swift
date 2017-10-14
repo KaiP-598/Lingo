@@ -30,9 +30,15 @@ class UserAccountDetailVC: UITableViewController {
     
 
     func obtainUserName(){
+        let defaults = UserDefaults.standard
+        if let usernameText = defaults.string(forKey: "username"){
+            self.nameLabel.text = usernameText
+        }
+
         userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let userName = snapshot.value as? String ?? ""
             self.nameLabel.text = userName
+            defaults.set(userName, forKey: "username")
         })
     }
     
